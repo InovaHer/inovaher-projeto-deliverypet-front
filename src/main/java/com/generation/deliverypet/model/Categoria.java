@@ -1,8 +1,10 @@
 package com.generation.deliverypet.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -13,10 +15,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -38,10 +41,12 @@ public class Categoria{
 	private String descricao;//Descrição da categoria
 	
 	
-	@NotNull(message = "O atributo data é obrigatório!")
-	@FutureOrPresent(message = "A data não pode estar no passado")
-    private LocalDate data_criacao;// Data da criação da categoria
-	
+	 @Column(name = "data_criacao", updatable = false)//Updatable desabilita a função de atualizar a data pois ela é gerada na criação
+	 @Temporal(TemporalType.TIMESTAMP)
+	 @JsonFormat(pattern = "dd/MM/yyyy")
+	 private LocalDate data_criacao;
+
+
 	//Relacionamento com a tabela Produto
 	@OneToMany(fetch = FetchType.LAZY,mappedBy ="categoria",cascade=CascadeType.REMOVE)
 	@JsonIgnoreProperties (value = "categoria",allowSetters=true)
@@ -71,12 +76,17 @@ public class Categoria{
 		this.descricao = descricao;
 	}
 
-	public LocalDate getData() {
+	public LocalDate getDataCriacao() {
 		return data_criacao;
 	}
 
-	public void setData(LocalDate data) {
-		this.data_criacao = data;
+	public void setDataCriacao(LocalDate data_criacao) {
+	    if (this.data_criacao != null) {
+	        throw new UnsupportedOperationException(
+	            "❌ O campo 'dataCriacao' não pode ser alterado após a criação do registro."
+	        );
+	    }
+	    this.data_criacao = LocalDate.now();
 	}
 
 	public List<Produto> getProduto() {

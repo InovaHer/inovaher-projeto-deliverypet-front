@@ -30,29 +30,29 @@ import jakarta.validation.Valid;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CategoriaController {
     
-    @Autowired
+    @Autowired//Injetando a classe repository
     private CategoriaRepository categoriaRepository;
     
-    @GetMapping
+    @GetMapping// Listando todos os dados da classe categoria
     public ResponseEntity<List<Categoria>> getAll(){
         return ResponseEntity.ok(categoriaRepository.findAll());
     }
     
-    @GetMapping("/{id}")
+    @GetMapping("/{id}")// Consultar por ID
     public ResponseEntity<Categoria> getById(@PathVariable Long id){
         return categoriaRepository.findById(id)
             .map(resposta -> ResponseEntity.ok(resposta))
             .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
     
-    @GetMapping("/descricao/{descricao}")
+    @GetMapping("/descricao/{descricao}")// Consultar categoria pela descricao
     public ResponseEntity<List<Categoria>> getAllByDescricao(@PathVariable 
     String descricao){
         return ResponseEntity.ok(categoriaRepository
             .findAllByDescricaoContainingIgnoreCase(descricao));
     }
     
-    @GetMapping("/periodo")
+    @GetMapping("/periodo")// Pesquisar quais categorias foram criadas em um periodo de tempo
     public ResponseEntity<List<Categoria>> getByPeriodo(
             @RequestParam LocalDate dataInicio,
             @RequestParam LocalDate dataFim) {
@@ -66,7 +66,7 @@ public class CategoriaController {
         return ResponseEntity.ok(lista);
     }
     
-    @PostMapping
+    @PostMapping // Criando uma categoria
     public ResponseEntity<Categoria> post(@Valid @RequestBody Categoria categoria){
     	
     	categoria.setId(null);
@@ -75,7 +75,7 @@ public class CategoriaController {
                 .body(categoriaRepository.save(categoria));
     }
     
-    @PutMapping
+    @PutMapping// Atualizando uma categoria
     public ResponseEntity<Categoria> put(@Valid @RequestBody Categoria categoria){
         return categoriaRepository.findById(categoria.getId())
             .map(resposta -> ResponseEntity.status(HttpStatus.OK)
@@ -84,7 +84,7 @@ public class CategoriaController {
     }
     
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}")//Deletando uma categoria
     public void delete(@PathVariable Long id) {
         Optional<Categoria> categoria = categoriaRepository.findById(id);
         
