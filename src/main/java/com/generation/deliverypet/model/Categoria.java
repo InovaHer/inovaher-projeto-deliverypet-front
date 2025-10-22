@@ -41,11 +41,9 @@ public class Categoria{
 	private String descricao;//Descrição da categoria
 	
 	
-	 @Column(name = "data_criacao", updatable = false)//Updatable desabilita a função de atualizar a data pois ela é gerada na criação
-	 @Temporal(TemporalType.TIMESTAMP)
-	 @JsonFormat(pattern = "dd/MM/yyyy")
-	 private LocalDate data_criacao;
-
+	@Column(name = "data_criacao", updatable = false)
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private LocalDate dataCriacao;
 
 	//Relacionamento com a tabela Produto
 	@OneToMany(fetch = FetchType.LAZY,mappedBy ="categoria",cascade=CascadeType.REMOVE)
@@ -77,16 +75,17 @@ public class Categoria{
 	}
 
 	public LocalDate getDataCriacao() {
-		return data_criacao;
+		return dataCriacao;
 	}
 
+	//Verificando se não atualização, uma fez o atributo criado não pode ser modificado
 	public void setDataCriacao(LocalDate data_criacao) {
-	    if (this.data_criacao != null) {
+	    if (this.dataCriacao != null) {
 	        throw new UnsupportedOperationException(
 	            "❌ O campo 'dataCriacao' não pode ser alterado após a criação do registro."
 	        );
 	    }
-	    this.data_criacao = LocalDate.now();
+	    this.dataCriacao = LocalDate.now();
 	}
 
 	public List<Produto> getProduto() {

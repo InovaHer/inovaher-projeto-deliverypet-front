@@ -1,11 +1,14 @@
 package com.generation.deliverypet.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -40,6 +43,13 @@ public class Produto {
 	@NotBlank(message = "O atributo quantidade é obrigatório!")
 	private int quantidade;
 
+	@ManyToOne
+    @JsonIgnoreProperties("produto") // evita loop infinito na serialização JSON
+    private Categoria categoria;
+	
+	@ManyToOne
+    @JsonIgnoreProperties("produto") // evita loop infinito na serialização JSON
+    private Usuario usuario;
 	
 	
 	public Long getId() {

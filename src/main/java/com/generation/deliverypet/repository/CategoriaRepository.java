@@ -1,5 +1,6 @@
 package com.generation.deliverypet.repository;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -14,6 +15,6 @@ public interface CategoriaRepository extends JpaRepository<Categoria, Long>{
 	
 
 	// Busca por período a criação da categoria
-    public List<Categoria> findAllByDataCriacaoBetween(LocalDateTime dataInicio, LocalDateTime dataFim);
+	public List<Categoria> findAllByDataCriacaoBetween(LocalDateTime localDateTime, LocalDateTime localDateTime2);
 	
 }

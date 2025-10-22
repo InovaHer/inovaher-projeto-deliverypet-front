@@ -54,11 +54,11 @@ public class CategoriaController {
     
     @GetMapping("/periodo")// Pesquisar quais categorias foram criadas em um periodo de tempo
     public ResponseEntity<List<Categoria>> getByPeriodo(
-            @RequestParam LocalDate dataInicio,
-            @RequestParam LocalDate dataFim) {
+            @RequestParam LocalDate dataInicial,
+            @RequestParam LocalDate dataFinal) {
         
         List<Categoria> lista = categoriaRepository
-                .findAllByDataCriacaoBetween(dataInicio.atStartOfDay(), dataFim.atTime(23, 59, 59));
+                .findAllByDataCriacaoBetween(dataInicial.atStartOfDay(), dataFinal.atStartOfDay());
         
         if (lista.isEmpty())
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
