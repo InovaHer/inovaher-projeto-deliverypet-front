@@ -46,6 +46,11 @@ public class Categoria{
 	@OneToMany(fetch = FetchType.LAZY,mappedBy ="categoria",cascade=CascadeType.REMOVE)
 	@JsonIgnoreProperties (value = "categoria",allowSetters=true)
 	private List<Produto> produto;
+	
+	@Column(length = 255)
+    @NotBlank(message = "O atributo tipo é obrigatório!")
+    @Size(min =5, message = "O atributo tipo deve conter no mínimo 2 caracteres")
+	private String tipo;
 
 	public Long getId() {
 		return id;
@@ -84,6 +89,17 @@ public class Categoria{
 	    }
 	    this.dataCriacao = LocalDateTime.now();
 	}
+	
+	
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
 
 	public List<Produto> getProduto() {
 		return produto;
@@ -92,6 +108,7 @@ public class Categoria{
 	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
 	}
+	
 
 }
 	
