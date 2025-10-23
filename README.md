@@ -1,5 +1,6 @@
-![logo](https://images-ext-1.discordapp.net/external/EkfzHxtVWEM69WDGSO17B0dBGu0GGy0pNXcARWh8FOI/%3FupdatedAt%3D1761221115442/https/ik.imagekit.io/gocq6aosm/logo.png?format=webp&quality=lossless)
-
+<p align="center">
+  <img src="https://images-ext-1.discordapp.net/external/EkfzHxtVWEM69WDGSO17B0dBGu0GGy0pNXcARWh8FOI/%3FupdatedAt%3D1761221115442/https/ik.imagekit.io/gocq6aosm/logo.png?format=webp&quality=lossless" alt="logo" />
+</p>
 
 # 🐾 InovaPet – Comidinha Boa - Backend
 
@@ -261,13 +262,9 @@ Os testes foram realizados via **Insomnia**, validando os principais fluxos CRUD
 
 ## 🖼️ Branding
 
-![logo](C:\Users\stell\OneDrive\Documents\generation\projeto integrador\logo.png)
-
-```
-
-```
-
----
+<p align="center">
+  <img src="https://images-ext-1.discordapp.net/external/EkfzHxtVWEM69WDGSO17B0dBGu0GGy0pNXcARWh8FOI/%3FupdatedAt%3D1761221115442/https/ik.imagekit.io/gocq6aosm/logo.png?format=webp&quality=lossless" alt="logo" />
+</p>
 
 ## 📜 Licença
 Projeto licenciado sob a **MIT License**.
