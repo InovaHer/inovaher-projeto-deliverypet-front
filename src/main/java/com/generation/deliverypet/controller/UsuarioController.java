@@ -24,7 +24,7 @@ import com.generation.deliverypet.repository.UsuarioRepository;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/usarios")
+@RequestMapping("/usuarios")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioController {
 
