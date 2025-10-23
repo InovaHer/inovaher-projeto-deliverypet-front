@@ -1,6 +1,7 @@
 package com.generation.deliverypet.controller;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,13 +53,13 @@ public class CategoriaController {
             .findAllByDescricaoContainingIgnoreCase(descricao));
     }
     
-    @GetMapping("/periodo")// Pesquisar quais categorias foram criadas em um periodo de tempo
+    @GetMapping("/periodo")
     public ResponseEntity<List<Categoria>> getByPeriodo(
-            @RequestParam LocalDate dataInicial,
-            @RequestParam LocalDate dataFinal) {
+            @RequestParam LocalDateTime dataInicial,
+            @RequestParam LocalDateTime dataFinal) {
         
         List<Categoria> lista = categoriaRepository
-                .findAllByDataCriacaoBetween(dataInicial.atStartOfDay(), dataFinal.atStartOfDay());
+                .findAllByDataCriacaoBetween(dataInicial, dataFinal);
         
         if (lista.isEmpty())
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
@@ -69,7 +70,7 @@ public class CategoriaController {
     @PostMapping // Criando uma categoria
     public ResponseEntity<Categoria> post(@Valid @RequestBody Categoria categoria){
     	
-    	categoria.setId(null);
+    	categoria.setDataCriacao(LocalDate.now());
     	
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(categoriaRepository.save(categoria));
@@ -77,6 +78,7 @@ public class CategoriaController {
     
     @PutMapping// Atualizando uma categoria
     public ResponseEntity<Categoria> put(@Valid @RequestBody Categoria categoria){
+    	categoria.setDataCriacao(null);
         return categoriaRepository.findById(categoria.getId())
             .map(resposta -> ResponseEntity.status(HttpStatus.OK)
             .body(categoriaRepository.save(categoria)))

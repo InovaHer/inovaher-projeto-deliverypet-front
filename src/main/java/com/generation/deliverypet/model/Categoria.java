@@ -1,9 +1,9 @@
 package com.generation.deliverypet.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -37,9 +37,10 @@ public class Categoria{
 	private String descricao;//Descrição da categoria
 	
 	
-	@Column(name = "data_criacao", updatable = false)
-	@JsonFormat(pattern = "yyyy-MM-dd")
-	private LocalDate dataCriacao;
+	@Column(name = "data_criacao",
+			nullable = false,
+			updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	private LocalDateTime dataCriacao;
 
 	//Relacionamento com a tabela Produto
 	@OneToMany(fetch = FetchType.LAZY,mappedBy ="categoria",cascade=CascadeType.REMOVE)
@@ -70,18 +71,18 @@ public class Categoria{
 		this.descricao = descricao;
 	}
 
-	public LocalDate getDataCriacao() {
+	public LocalDateTime getDataCriacao() {
 		return dataCriacao;
 	}
 
 	//Verificando se não atualização, uma fez o atributo criado não pode ser modificado
-	public void setDataCriacao(LocalDate data_criacao) {
-	    if (this.dataCriacao != null) {
+	public void setDataCriacao(LocalDate dataCriacao) {
+	  if (this.dataCriacao != null) {
 	        throw new UnsupportedOperationException(
 	            "❌ O campo 'dataCriacao' não pode ser alterado após a criação do registro."
 	        );
 	    }
-	    this.dataCriacao = LocalDate.now();
+	    this.dataCriacao = LocalDateTime.now();
 	}
 
 	public List<Produto> getProduto() {
