@@ -1,12 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Cadastro from "./pages/cadastro/Cadastro"
-import Login from "./pages/login/Login"
 
-import { AuthProvider } from "./contexts/AuthContext"
-
-import { ToastContainer } from "react-toastify"
-import 'react-toastify/dist/ReactToastify.css';
-import Perfil from "./pages/perfil/Perfil"
 import AtualizarPerfil from "./pages/perfil/AtualizarPerfil"
 import DeletarCategoria from "./components/categoria/deletarcategoria/DeletarCategoria"
 import FormCategoria from "./components/categoria/formcategoria/FormCategoria"
@@ -14,6 +6,12 @@ import ListaCategorias from "./components/categoria/listacategorias/ListaCategor
 import DeletarProduto from "./components/produto/deletarproduto/DeletarProduto"
 import FormProduto from "./components/produto/formproduto/FormProduto"
 import ListaProdutos from "./components/produto/listaprodutos/ListaProdutos"
+import Login from "./pages/login/Login"
+import Cadastro from "./pages/cadastro/Cadastro"
+import { AuthProvider } from "./contexts/AuthContext"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Perfil from "./pages/perfil/Perfil"
+import { ToastContainer } from "react-toastify"
 
 function App() {
 
@@ -28,8 +26,6 @@ function App() {
               <Route path="/" element={<Login />} />
 
               <Route path="/cadastro" element={<Cadastro />} />
-
-
               <Route path="/categorias" element={<ListaCategorias />} />
               <Route path="/cadastrarcategoria" element={<FormCategoria />} />
               <Route path="/editarcategoria/:id" element={<FormCategoria />} />
@@ -48,6 +44,7 @@ function App() {
       </AuthProvider>
     </>
   )
+  
 }
 
 export default App
