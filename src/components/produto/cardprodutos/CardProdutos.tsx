@@ -8,7 +8,11 @@ interface CardProdutoProps {
 
 function CardProduto({ produto }: Readonly<CardProdutoProps>) {
     return (
-        <div className="flex flex-col justify-between my-4 sm:my-6 md:my-4 lg:my-10 overflow-hidden bg-indigo-300 rounded-lg">
+        <div className=" bg- from-blue-50 via-indigo-100 to-blue-100 
+                rounded-xl border border-indigo-300 shadow-md 
+                flex flex-col overflow-hidden 
+                p-5 gap-3
+                hover:shadow-lg hover:scale-[1.01] transition-all duration-300">
             <div className="flex items-end justify-end pt-2 pr-2">
                 <Link to={`/editarproduto/${produto.id}`}>
                     <PencilIcon
@@ -25,14 +29,14 @@ function CardProduto({ produto }: Readonly<CardProdutoProps>) {
                 </Link>
             </div>
 
-            <div className="py-4 font-medium text-black">
+            <div className="flex flex-col items-center">
                 <img
                     src={produto.foto}
-                    className="mx-auto mt-1 h-44 max-w-75"
+                    className="w-24 h-24 rounded-full object-cover border-2 border-indigo-400 shadow"
                     alt={produto.nome}
                 />
 
-                <div className="p-4">
+                <div className="flex flex-col gap-2 text-indigo-900 font-semibold">
                     <p className="text-sm text-center uppercase">
                         {produto.nome}
                     </p>
@@ -40,15 +44,19 @@ function CardProduto({ produto }: Readonly<CardProdutoProps>) {
                         {produto.descricao}
                     </p>
                     <p className="text-sm text-center uppercase">
+                        <span className="font-bold text-indigo-700">Proteína: </span>
                         {produto.proteina}
                     </p>
                     <p className="text-sm text-center uppercase">
+                        <span className="font-bold text-indigo-700">Pet: </span>
                         {produto.tipoPet}
                     </p>
                     <p className="text-sm text-center uppercase">
+                        <span className="font-bold text-indigo-700">Idade: </span>
                         {produto.faixaEtaria}
                     </p>
                     <p className="text-sm text-center uppercase">
+                        <span className="font-bold text-indigo-700">Quantidade: </span>
                         {produto.quantidade}
                     </p>
                     <h3 className="text-xl font-bold text-center uppercase">
@@ -64,7 +72,9 @@ function CardProduto({ produto }: Readonly<CardProdutoProps>) {
             </div>
             <div className="flex flex-wrap">
                 <button
-                    className="flex items-center justify-center w-full py-2 font-medium text-white bg-indigo-400 hover:bg-indigo-700"
+                    className=" w-1/2 text-white bg-fuchsia-500 hover:bg-fuchsia-700 
+                        flex items-center justify-center py-2 
+                        rounded-xl font-semibold transition"
                 >
                     Comprar
                 </button>

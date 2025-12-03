@@ -6,27 +6,40 @@ interface CardCategoriaProps {
 }
 function CardCategoria({ categoria }: CardCategoriaProps) {
     return (
-        <div className="border flex flex-col rounded-2xl overflow-hidden justify-between ">
-            <header className="py-2 px-6 bg-indigo-600 text-white font-bold text-2xl">
+        <div className="bg-white rounded-2xl border border-indigo-200 shadow-md 
+                flex flex-col overflow-hidden
+                p-6 gap-4
+                hover:shadow-xl transition-all duration-300">
+            <header className="text-indigo-700 font-semibold text-2xl text-center">
                 Categoria
             </header>
-            <p className="p-8 text-3xl bg-white text-black">{categoria.nome}</p>
-            <p className="p-8 text-3xl bg-white text-black">{categoria.descricao}</p>
-            <p className="p-8 text-3xl bg-white text-black">
-                {new Date(categoria.dataCriacao).toLocaleDateString('pt-BR')}</p>
-            <p className="p-8 text-3xl bg-white text-black">{categoria.tipo}</p>
 
-            <div className="flex">
-                <Link to={`/editarcategoria/${categoria.id}`}
-                    className="w-full text-slate-100 bg-blue-400
-                       hover:bg-blue-700 
-                        flex items-center justify-center py-2 font-medium">
-                    <button>Editar</button>
-                </Link>
+            <div className="flex flex-col gap-4 text-indigo-900">
+                <p className="text-xl font-semibold text-center">{categoria.nome}</p>
+                <p className="text-base font-semibold text-center text-indigo-800">{categoria.descricao}</p>
+                <p className="text-base font-semibold text-center text-indigo-800">
+                    {new Date(categoria.dataCriacao).toLocaleDateString('pt-BR')}</p>
+                <p className="text-base font-semibold text-center text-indigo-800">{categoria.tipo}</p>
 
-                <Link to={`/deletarcategoria/${categoria.id}`} className="text-slate-100 bg-red-500 hover:bg-red-700 w-full flex items-center justify-center font-medium">
-                    <button>Deletar</button>
-                </Link>
+                <div className="flex gap-2 pt-4">
+                    <Link to={`/editarcategoria/${categoria.id}`}
+                        className='
+                            w-1/2 text-white bg-indigo-500 hover:bg-indigo-700
+                            flex items-center justify-center py-2
+                            rounded-lg font-semibold transition
+                        '>
+                        <button>Editar</button>
+                    </Link>
+
+                    <Link to={`/deletarcategoria/${categoria.id}`} className='
+                            w-1/2 text-white bg-fuchsia-500 hover:bg-fuchsia-700
+                            flex items-center justify-center py-2
+                            rounded-lg font-semibold transition
+                        '>
+                        <button>Deletar</button>
+                    </Link>
+
+                </div>
             </div>
         </div>
     )

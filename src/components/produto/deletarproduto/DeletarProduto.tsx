@@ -74,47 +74,46 @@ function DeletarProduto() {
     }
 
     return (
-        <div className='container w-1/3 mx-auto'>
-            <h1 className='text-4xl text-center my-4 text-black'>Deletar Produto</h1>
+        <div className='container w-full max-w-md mx-auto px-4 pt-20 md:pt-6'>
+            <h1 className='text-3xl md:text-4xl text-center py-4 text-fuchsia-700'>Deletar Produto</h1>
 
-            <p className='text-center font-semibold mb-4 text-black'>
+            <p className='text-center font-semibold mb-4 text-base md:text-lg text-fuchsia-700'>
                 Você tem certeza de que deseja apagar o produto a seguir?
             </p>
 
-            <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
+            <div className='border flex flex-col rounded-2xl overflow-hidden justify-between bg-indigo-100'>
                 <header
-                    className='py-2 px-6 bg-white text-black font-bold text-2xl'>
+                    className='py-2 px-4 md:px-6 bg-indigo-700 text-white font-bold text-lg md:text-2xl'>
                     Produto
                 </header>
-                <div className="p-4 bg-white">
-                    <p className='text-xl h-full text-black'>{produto.foto}</p>
-                    <p className='text-xl h-full text-black'>{produto.nome}</p>
-                    <p className='text-xl h-full text-black'>{produto.descricao}</p>
-                    <p className='text-xl h-full text-black'>{produto.proteina}</p>
-                    <p className='text-xl h-full text-black'>{produto.tipoPet}</p>
-                    <p className='text-xl h-full text-black'>{produto.faixaEtaria}</p>
-                    <p className='text-xl h-full text-black'>{produto.quantidade}</p>
-                    <p className='text-xl h-full text-black'>{produto.preco}</p>
-                </div>
-                <div className="flex">
-                    <button
-                        className='text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2'
-                        onClick={retornar}>
-                        Não
-                    </button>
-                    <button
-                        className='w-full text-slate-100 bg-blue-400 hover:bg-blue-700 flex items-center justify-center'
-                        onClick={deletarProduto}>
 
-                        {isLoading ?
-                            <ClipLoader
-                                color="#ffffff"
-                                size={24}
-                            /> :
-                            <span>Sim</span>
-                        }
-                    </button>
-                </div>
+                <p>{produto.foto}</p>
+                <p><strong>Nome:</strong>{produto.nome}</p>
+                <p><strong>Descrição:</strong>{produto.descricao}</p>
+                <p><strong>Proteína:</strong>{produto.proteina}</p>
+                <p><strong>Tipo do Pet:</strong>{produto.tipoPet}</p>
+                <p><strong>Faixa Etária:</strong>{produto.faixaEtaria}</p>
+                <p><strong>Quantidade:</strong>{produto.quantidade}</p>
+                <p><strong>Valor:</strong>R$ {produto.preco}</p>
+            </div>
+            <div className="flex flex-row">
+                <button
+                    className='text-slate-100  bg-fuchsia-500 hover:bg-fuchsia-700 w-full py-2 text-base md:text-lg'
+                    onClick={retornar}>
+                    Não
+                </button>
+                <button
+                    className='w-full text-slate-100 bg-indigo-500 hover:bg-indigo-700 flex items-center justify-center text-base md:text-lg'
+                    onClick={deletarProduto}>
+
+                    {isLoading ?
+                        <ClipLoader
+                            color="#ffffff"
+                            size={24}
+                        /> :
+                        <span>Sim</span>
+                    }
+                </button>
             </div>
         </div>
     )

@@ -70,7 +70,7 @@ function ListarProdutosPorNome() {
             {isLoading && (
                 <div className="flex justify-center w-full my-8">
                     <SyncLoader
-                        color="#1e1b4b"
+                        color="#312e81"
                         size={32}
                     />
                 </div>

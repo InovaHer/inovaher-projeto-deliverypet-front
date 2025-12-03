@@ -109,10 +109,10 @@ function FormCategoria() {
     }
 
     return (
-        <div className="container flex flex-col items-center justify-center mx-auto">
-            <h1 className="text-4xl text-center my-8">{id === undefined ? 'Cadastrar' : 'Atualizar'} Categoria</h1>
+        <div className="container flex flex-col items-center justify-center mx-auto my-4 md:my-0 px-4 py-12">
+            <h1 className="text-3xl md:text-4xl text-center mb-6 text-indigo-700">{id === undefined ? 'Cadastrar' : 'Atualizar'} Categoria</h1>
 
-            <form className="w-1/2 flex flex-col gap-4"
+            <form className="w-full max-w-lg flex flex-col gap-4 text-indigo-700"
                 onSubmit={gerarNovaCategoria}>
                 <div className="flex flex-col gap-2">
                     <label htmlFor="nome">Nome da Categoria</label>
@@ -120,7 +120,7 @@ function FormCategoria() {
                         type="text"
                         placeholder="Nome da categoria"
                         name='nome'
-                        className="border-2 border-black rounded p-2"
+                        className="border-2 border-indigo-900 rounded p-2 bg-indigo-100 text-base"
                         value={categoria.nome}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
@@ -131,7 +131,7 @@ function FormCategoria() {
                         type="text"
                         placeholder="Descreva aqui a categoria"
                         name='descricao'
-                        className="border-2 border-black rounded p-2"
+                        className="border-2 border-indigo-900 rounded p-2 bg-indigo-100 text-base"
                         value={categoria.descricao}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
@@ -142,13 +142,12 @@ function FormCategoria() {
                         type="text"
                         placeholder="Insira o tipo da categoria"
                         name='tipo'
-                        className="border-2 border-black rounded p-2"
+                        className="border-2 border-indigo-900 rounded p-2 bg-indigo-100 text-base"
                         value={categoria.tipo}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
-                <button className="rounded text-black bg-indigo-300
-                                    hover:bg-indigo-600 w-1/2 py-2 mx-auto flex justify-center"
+                <button className="rounded text-slate-100 bg-indigo-500  hover:bg-indigo-800 w-full py-2 mt-2 flex justify-center items-center text-base"
                     type="submit">
                     {
                         isLoading ?
