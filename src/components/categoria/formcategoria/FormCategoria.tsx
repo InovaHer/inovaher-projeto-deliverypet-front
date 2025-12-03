@@ -4,6 +4,7 @@ import { atualizar, buscar, cadastrar } from "../../../services/Service";
 import { ClipLoader } from "react-spinners";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 import type Categoria from "../../../models/Categoria";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 function FormCategoria() {
 
@@ -63,11 +64,16 @@ function FormCategoria() {
         setIsLoading(true);
 
         if (id !== undefined) {
-            // Atualização
+            const categoriaParaEnviar = {
+                id: Number(id),
+                nome: categoria.nome,
+                descricao: categoria.descricao,
+                tipo: categoria.tipo
+            };
 
             try {
 
-                await atualizar('/categorias', categoria, setCategoria, {
+                await atualizar('/categorias', categoriaParaEnviar, setCategoria, {
                     headers: { Authorization: token }
                 })
                 ToastAlerta('A categoria foi atualizada com sucesso!', 'sucesso');
@@ -131,17 +137,6 @@ function FormCategoria() {
                     />
                 </div>
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="dataCriacao">Data de criação da Categoria</label>
-                    <input
-                        type="date"
-                        name="dataCriacao"
-                        value={categoria.dataCriacao ? categoria.dataCriacao.substring(0, 10) : ""}
-                        onChange={atualizarEstado}
-                        className="border-2 border-black rounded p-2"
-                    />
-
-                </div>
-                <div className="flex flex-col gap-2">
                     <label htmlFor="tipo">Tipo da Categoria</label>
                     <input
                         type="text"
@@ -152,7 +147,7 @@ function FormCategoria() {
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
-                <button className="rounded text-black bg-white
+                <button className="rounded text-black bg-indigo-300
                                     hover:bg-indigo-600 w-1/2 py-2 mx-auto flex justify-center"
                     type="submit">
                     {

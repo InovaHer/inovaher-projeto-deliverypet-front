@@ -228,6 +228,8 @@ function ListarProdutosPorNome() {
 }
 
 export default ListarProdutosPorNome;
+
+
 function listar(arg0: string, setProdutos: Dispatch<SetStateAction<Produto[]>>) {
     throw new Error("Function not implemented.")
 }

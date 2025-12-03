@@ -11,9 +11,9 @@ function Login() {
 
 	const { usuario, handleLogin, isLoading } = useContext(AuthContext)
 
-	useEffect( () => {
-		if (usuario.token !== ""){
-			navigate('/perfil')
+	useEffect(() => {
+		if (usuario.token !== "") {
+			navigate('/')
 		}
 	}, [usuario])
 
@@ -24,7 +24,7 @@ function Login() {
 		})
 	}
 
-	function login(e: FormEvent<HTMLFormElement>){
+	function login(e: FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 
 		handleLogin(usuarioLogin);
@@ -76,7 +76,7 @@ function Login() {
 									size={24}
 								/>
 
-							:
+								:
 
 								<span>Entrar</span>
 

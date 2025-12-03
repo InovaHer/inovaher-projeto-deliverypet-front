@@ -5,6 +5,7 @@ import { ClipLoader } from "react-spinners";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 import type Categoria from "../../../models/Categoria";
 import type Produto from "../../../models/Produto";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 function FormProduto() {
 
@@ -85,8 +86,7 @@ function FormProduto() {
         setProduto({
             ...produto,
             [e.target.name]: e.target.value,
-            categoria: categoria,
-            usuario: usuario,
+            categoria: categoria
         });
     }
 
@@ -267,7 +267,7 @@ function FormProduto() {
                 </div>
                 <button
                     type='submit'
-                    className='rounded bg-white hover:bg-indigo-500
+                    className='rounded bg-indigo-900 hover:bg-indigo-500
                                text-white font-bold w-1/2 mx-auto py-2 flex justify-center'
                     disabled={carregandoCategoria}
                 >

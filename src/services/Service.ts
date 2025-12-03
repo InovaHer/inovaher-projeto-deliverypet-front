@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Instância do Axios
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL
+    baseURL: 'https://inovaher-projeto-deliverypet.onrender.com/'
 })
 
 // Função para Cadastrar Usuário

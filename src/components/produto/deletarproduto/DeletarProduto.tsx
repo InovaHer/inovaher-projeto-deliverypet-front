@@ -4,6 +4,7 @@ import { buscar, deletar } from "../../../services/Service"
 import { ClipLoader } from "react-spinners"
 import { ToastAlerta } from "../../../utils/ToastAlerta"
 import type Produto from "../../../models/Produto"
+import { AuthContext } from "../../../contexts/AuthContext"
 
 function DeletarProduto() {
 

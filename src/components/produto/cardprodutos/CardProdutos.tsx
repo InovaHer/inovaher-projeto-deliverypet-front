@@ -8,7 +8,7 @@ interface CardProdutoProps {
 
 function CardProduto({ produto }: Readonly<CardProdutoProps>) {
     return (
-        <div className="flex flex-col justify-between my-4 sm:my-6 md:my-4 lg:my-10 overflow-hidden bg-white rounded-lg">
+        <div className="flex flex-col justify-between my-4 sm:my-6 md:my-4 lg:my-10 overflow-hidden bg-indigo-300 rounded-lg">
             <div className="flex items-end justify-end pt-2 pr-2">
                 <Link to={`/editarproduto/${produto.id}`}>
                     <PencilIcon

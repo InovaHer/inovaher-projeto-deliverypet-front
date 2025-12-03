@@ -5,6 +5,7 @@ import { SyncLoader } from "react-spinners";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 import CardProduto from "../cardprodutos/CardProdutos";
 import type Produto from "../../../models/Produto";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 function ListaProdutos() {
 

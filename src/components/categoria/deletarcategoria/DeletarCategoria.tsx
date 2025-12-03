@@ -4,6 +4,7 @@ import { buscar, deletar } from "../../../services/Service";
 import { ClipLoader } from "react-spinners";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 import type Categoria from "../../../models/Categoria";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 function DeletarCategoria() {
 
