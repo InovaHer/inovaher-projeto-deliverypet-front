@@ -142,38 +142,38 @@ function FormProduto() {
     const carregandoCategoria = categoria.descricao === '';
 
     return (
-        <div className="container flex flex-col mx-auto items-center">
-            <h1 className="text-4xl text-center my-8 text-black font-medium">
-                {id !== undefined ? 'Editar Postagem' : 'Cadastrar Postagem'}
+        <div className="container flex flex-col items-center justify-center mx-auto my-4 md:my-0 px-4 py-12 bg-white">
+            <h1 className="text-3xl md:text-4xl text-center mb-6 text-indigo-700 font-semibold">
+                {id !== undefined ? 'Editar Produto' : 'Cadastrar Produto'}
             </h1>
 
-            <form className="flex flex-col w-1/2 gap-4"
+            <form className="w-full max-w-lg flex flex-col gap-4 text-indigo-800 font-semibold max-h-[75vh] overflow-y-auto p-2"
                 onSubmit={gerarNovoProduto}>
-                <div className="flex flex-col gap-2 text-black font-medium">
+                <div className="flex flex-col gap-2">
                     <label htmlFor="titulo">Nome do Produto</label>
                     <input
                         type="text"
                         placeholder="Insira aqui o nome do Produto"
                         name="nome"
                         required
-                        className="border-2 border-black rounded p-2 "
+                        className="border-2 border-indigo-300 rounded p-2 bg-indigo-50"
                         value={produto.nome}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
-                <div className="flex flex-col gap-2 text-black font-medium">
+                <div className="flex flex-col gap-2">
                     <label htmlFor="titulo">Descrição do Produto</label>
                     <input
                         type="text"
                         placeholder="Insira aqui a descrição do Produto"
                         name="descricao"
                         required
-                        className="border-2 border-black rounded p-2 "
+                        className="border-2 border-indigo-300 bg-indigo-50 rounded p-2"
                         value={produto.descricao}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
-                <div className="flex flex-col gap-2 text-black font-medium">
+                <div className="flex flex-col gap-2">
                     <label htmlFor="titulo">Preço do Produto</label>
                     <input
                         value={
@@ -185,10 +185,10 @@ function FormProduto() {
                         placeholder="Adicione aqui o preço do Produto"
                         name="preco"
                         required
-                        className="border-2 border-black rounded p-2 "
+                        className="border-2 border-indigo-300 bg-indigo-50 rounded p-2"
                     />
                 </div>
-                <div className="flex flex-col gap-2 text-black font-medium">
+                <div className="flex flex-col gap-2">
                     <label htmlFor="titulo">Foto do Produto</label>
                     <input
                         value={produto.foto}
@@ -197,60 +197,60 @@ function FormProduto() {
                         placeholder="Adicione aqui a foto do Produto"
                         name="foto"
                         required
-                        className="border-2 border-black rounded p-2 "
+                        className="border-2 border-indigo-300 bg-indigo-50 rounded p-2"
                     />
                 </div>
-                <div className="flex flex-col gap-2 text-black font-medium">
+                <div className="flex flex-col gap-2">
                     <label htmlFor="titulo">Quantidade</label>
                     <input
                         type="number"
                         placeholder="Insira aqui a quantidade do Produto"
                         name="quantidade"
                         required
-                        className="border-2 border-black rounded p-2 "
+                        className="border-2 border-indigo-300 bg-indigo-50 rounded p-2"
                         value={produto.quantidade}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
-                <div className="flex flex-col gap-2 text-black font-medium">
+                <div className="flex flex-col gap-2">
                     <label htmlFor="titulo">Proteína</label>
                     <input
                         type="text"
                         placeholder="Insira aqui a proteína do Produto"
                         name="proteina"
                         required
-                        className="border-2 border-black rounded p-2 "
+                        className="border-2 border-indigo-300 bg-indigo-50 rounded p-2"
                         value={produto.proteina}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
-                <div className="flex flex-col gap-2 text-black font-medium">
+                <div className="flex flex-col gap-2">
                     <label htmlFor="titulo">Tipo do Pet</label>
                     <input
                         type="text"
                         placeholder="O seu pet é um cachorro ou gato?"
                         name="tipoPet"
                         required
-                        className="border-2 border-black rounded p-2 "
+                        className="border-2 border-indigo-300 bg-indigo-50 rounded p-2"
                         value={produto.tipoPet}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
-                <div className="flex flex-col gap-2 text-black font-medium">
+                <div className="flex flex-col gap-2">
                     <label htmlFor="titulo">Faixa Etária do Pet</label>
                     <input
                         type="text"
                         placeholder="O seu pet é filhote, adulto ou senior?"
                         name="faixaEtaria"
                         required
-                        className="border-2 border-black rounded p-2 "
+                        className="border-2 border-indigo-300 bg-indigo-50 rounded p-2"
                         value={produto.faixaEtaria}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
-                <div className="flex flex-col gap-2 text-black font-medium">
+                <div className="flex flex-col gap-2">
                     <p>Categoria do Produto</p>
-                    <select name="categoria" id="categoria" className='border p-2 border-black rounded bg-white'
+                    <select name="categoria" id="categoria" className='border-2 p-2 border-indigo-300 bg-indigo-50 rounded'
                         onChange={(e) => buscarCategoriaPorId(e.currentTarget.value)}
                     >
                         <option value="" selected disabled>Selecione uma Categoria</option>
@@ -267,8 +267,7 @@ function FormProduto() {
                 </div>
                 <button
                     type='submit'
-                    className='rounded bg-indigo-900 hover:bg-indigo-500
-                               text-white font-bold w-1/2 mx-auto py-2 flex justify-center'
+                    className='rounded text-white bg-indigo-500 hover:bg-indigo-700 w-full py-2 mt-2 flex justify-center items-center text-base font-semibold'
                     disabled={carregandoCategoria}
                 >
                     {isLoading ?

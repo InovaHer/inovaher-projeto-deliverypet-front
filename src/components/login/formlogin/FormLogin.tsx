@@ -34,7 +34,7 @@ function FormLogin() {
 
 	return (
 		<>
-			<div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center font-bold ">
+			<div className="flex justify-center h-auto place-items-center font-bold p-10 ">
 				<form className="flex justify-center items-center flex-col w-1/2 gap-4"
 					onSubmit={login}
 				>
@@ -78,8 +78,6 @@ function FormLogin() {
 						}
 					</button>
 
-					<hr className="border-slate-800 w-full" />
-
 					<p>
 						Ainda não tem uma conta?{" "}
 						<Link to="/cadastro" className="text-indigo-800 hover:underline">
@@ -87,10 +85,6 @@ function FormLogin() {
 						</Link>
 					</p>
 				</form>
-				<div
-					className="bg-[url('https://i.imgur.com/ZZFAmzo.jpg')] lg:block hidden bg-no-repeat 
-                            w-full min-h-screen bg-cover bg-center"
-				></div>
 			</div>
 		</>
 	)

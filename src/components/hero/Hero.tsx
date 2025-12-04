@@ -53,8 +53,8 @@ export default function HeroHome() {
                 Saiba mais
               </Link>
 
-              <a
-                href="/listarprodutos"
+              <Link
+                to="/listarprodutos"
                 className="
                   rounded-xl 
                   border-2 border-indigo-600 
@@ -69,7 +69,7 @@ export default function HeroHome() {
                 "
               >
                 Nossos Produtos
-              </a>
+              </Link>
 
             </div>
           </div>
