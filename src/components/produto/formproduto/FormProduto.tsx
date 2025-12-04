@@ -144,10 +144,10 @@ function FormProduto() {
     return (
         <div className="container flex flex-col items-center justify-center mx-auto my-4 md:my-0 px-4 py-12 bg-white">
             <h1 className="text-3xl md:text-4xl text-center mb-6 text-indigo-700 font-semibold">
-                {id !== undefined ? 'Editar Postagem' : 'Cadastrar Postagem'}
+                {id !== undefined ? 'Editar Produto' : 'Cadastrar Produto'}
             </h1>
 
-            <form className="w-full max-w-lg flex flex-col gap-4 text-indigo-800 font-semibold"
+            <form className="w-full max-w-lg flex flex-col gap-4 text-indigo-800 font-semibold max-h-[75vh] overflow-y-auto p-2"
                 onSubmit={gerarNovoProduto}>
                 <div className="flex flex-col gap-2">
                     <label htmlFor="titulo">Nome do Produto</label>

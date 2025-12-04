@@ -1,12 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Cadastro from "./pages/cadastro/Cadastro"
-import Login from "./pages/login/Login"
 
-import { AuthProvider } from "./contexts/AuthContext"
-
-import { ToastContainer } from "react-toastify"
-import 'react-toastify/dist/ReactToastify.css';
-import Perfil from "./pages/perfil/Perfil"
 import AtualizarPerfil from "./pages/perfil/AtualizarPerfil"
 import DeletarCategoria from "./components/categoria/deletarcategoria/DeletarCategoria"
 import FormCategoria from "./components/categoria/formcategoria/FormCategoria"
@@ -14,24 +6,51 @@ import ListaCategorias from "./components/categoria/listacategorias/ListaCategor
 import DeletarProduto from "./components/produto/deletarproduto/DeletarProduto"
 import FormProduto from "./components/produto/formproduto/FormProduto"
 import ListaProdutos from "./components/produto/listaprodutos/ListaProdutos"
+import Cadastro from "./pages/cadastro/Cadastro"
+import { AuthProvider } from "./contexts/AuthContext"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Perfil from "./pages/perfil/Perfil"
+import { ToastContainer } from "react-toastify"
+import Home from "./pages/home/Home"
+import SaibaMais from "./components/saibamais/SaibaMais"
+import Navbar from "./components/navbar/Navbar"
+import Footer from "./components/footer/footer"
+import { useState } from "react"
+import Sobre from "./pages/sobre/Sobre"
+import FormLogin from "./components/login/formlogin/FormLogin"
+
+type MenuState = 'closed' | 'open';
 
 function App() {
+
+  const [menuState, setMenuState] = useState<MenuState>('closed');
+
+  const toggleMenu = (): void => {
+    setMenuState(prevState => prevState === 'closed' ? 'open' : 'closed');
+  };
+
+  const closeMenu = (): void => {
+    setMenuState('closed');
+  };
 
   return (
     <>
       <AuthProvider>
         <ToastContainer />
         <BrowserRouter>
-          {/* <Navbar /> */}
+          <Navbar
+            menuState={menuState}
+            onMenuToggle={toggleMenu}
+            onMenuClose={closeMenu}
+          />
           <div className="min-h-[80vh]">
             <Routes>
-              <Route path="/" element={<Login />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
 
               <Route path="/cadastro" element={<Cadastro />} />
-
-
               <Route path="/categorias" element={<ListaCategorias />} />
-              <Route path="/cadastrarcategoria" element={<FormCategoria />} />
+              <Route path="/cadcategoria" element={<FormCategoria />} />
               <Route path="/editarcategoria/:id" element={<FormCategoria />} />
               <Route path="/deletarcategoria/:id" element={<DeletarCategoria />} />
 
@@ -41,9 +60,14 @@ function App() {
               <Route path="/deletarproduto/:id" element={<DeletarProduto />} />
               <Route path="/perfil" element={<Perfil />} />
               <Route path="/atualizarusuario" element={<AtualizarPerfil />} />
+              <Route path="/saibamais" element={<SaibaMais />} />
+              <Route path="/listarprodutos" element={<ListaProdutos />} />
+              <Route path="/usuarios/logar" element={<FormLogin  />} />
+              <Route path="/sobre" element={<Sobre />} />
+
             </Routes>
           </div>
-          {/* <Footer/> */}
+          <Footer/>
         </BrowserRouter>
       </AuthProvider>
     </>

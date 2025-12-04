@@ -3,6 +3,8 @@ import { buscar } from "../../../services/Service";
 import { SyncLoader } from "react-spinners";
 import CardProduto from "../cardprodutos/CardProdutos";
 import type Produto from "../../../models/Produto";
+import { AuthContext } from "../../../contexts/AuthContext";
+import ModalProduto from "../modalproduto/ModalProdutos";
 
 function ListaProdutos() {
 
