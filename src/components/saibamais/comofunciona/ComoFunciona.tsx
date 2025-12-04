@@ -9,11 +9,11 @@ function ComoFunciona() {
       />
 
       <div>
-        <h2 className="text-2xl md:text-4xl font-bold mb-6 text-green-800">
+        <h2 className="text-2xl md:text-4xl font-extrabold mb-6 text-indigo-800">
           Como funciona?
         </h2>
 
-        <ul className="space-y-4 text-gray-700">
+        <ul className="space-y-6 text-slate-700 font-bold text-xl">
           <li>🥩 Ingredientes frescos e selecionados</li>
           <li>⚖️ Refeições balanceadas por nutricionistas</li>
           <li>🍲 Preparação artesanal e cuidadosa</li>

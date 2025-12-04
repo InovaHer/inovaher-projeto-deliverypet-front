@@ -1,39 +1,74 @@
 import { Link } from "react-router-dom"
-import ComoFunciona from "../saibamais/comofunciona/ComoFunciona" // ✅ caminho corrigido
+import ComoFunciona from "../saibamais/comofunciona/ComoFunciona"
 import GaleriaFotos from "./galeriafotos/GaleriaFotos"
 
 function OQueEAlimentacaoNatural() {
   return (
-    <section className="max-w-6xl mx-auto py-16 px-6">
+    <section className="mx-auto max-w-6xl px-6 py-20">
       
-      <h2 className="text-2xl md:text-4xl font-bold mb-6 text-green-800">
+      <h2 className="
+        mb-10 
+        text-4xl md:text-5xl lg:text-6xl 
+        font-extrabold 
+        tracking-tight 
+        text-indigo-800
+      ">
         O que é alimentação natural?
       </h2>
 
-      <p className="text-gray-700 leading-relaxed mb-4">
-        A alimentação natural para pets é baseada em alimentos frescos,
+      <p className="
+        mb-8 
+        text-lg md:text-2xl 
+        font-semibold 
+        justufy-center
+        leading-relaxed 
+        text-slate-700
+      ">
+          A alimentação natural para pets é baseada em alimentos frescos,
         preparados de forma balanceada para atender todas as necessidades
         nutricionais de cães e gatos. Diferente das rações industrializadas,
         ela utiliza ingredientes reais como carnes, legumes, verduras e grãos.
       </p>
 
-      <p className="text-gray-700 leading-relaxed mb-10">
-        Esse tipo de alimentação pode proporcionar mais energia, melhor
+      <p className="
+        mb-10 
+        text-lg md:text-2xl 
+        font-semibold 
+        justify-center
+        leading-relaxed 
+        text-slate-700
+      ">
+          Esse tipo de alimentação pode proporcionar mais energia, melhor
         digestão, pelagem mais bonita e fortalecimento do sistema imunológico.
       </p>
 
-      {/*  Como Funciona no final do conteúdo */}
+      {/* Como funciona */}
       <ComoFunciona />
 
-      <GaleriaFotos />
+      {/* Galeria */}
+      <div className="mt-16">
+        <GaleriaFotos />
+      </div>
 
-      {/* Botão após o Como Funciona */}
-      <div className="mt-12 text-center">
+      {/* Botão final */}
+      <div className="mt-16 text-center">
         <Link
           to="/depoimentos"
-          className="inline-block px-8 py-4 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 transition-colors"
+          className="
+            inline-block
+            rounded-full 
+            bg-indigo-600 
+            px-10 py-5 
+            text-lg md:text-xl 
+            font-extrabold 
+            text-white 
+            shadow-lg 
+            transition-all
+            hover:scale-105 
+            hover:bg-indigo-700
+          "
         >
-          Conheça nossos clientes mais importantes 🐾
+          Conheça nossos clientes mais importantes 
         </Link>
       </div>
 
@@ -42,4 +77,6 @@ function OQueEAlimentacaoNatural() {
 }
 
 export default OQueEAlimentacaoNatural
+
+
 
