@@ -72,6 +72,30 @@ function OQueEAlimentacaoNatural() {
         </Link>
       </div>
 
+    
+
+     {/* Botão final */}
+      <div className="mt-16 text-center">
+        <Link
+          to="/herostack"
+          className="
+            inline-block
+            rounded-full 
+            bg-indigo-600 
+            px-10 py-5 
+            text-lg md:text-xl 
+            font-extrabold 
+            text-white 
+            shadow-lg 
+            transition-all
+            hover:scale-105 
+            hover:bg-indigo-700
+          "
+        >
+          stacks usadas
+        </Link>
+      </div>
+
     </section>
   )
 }

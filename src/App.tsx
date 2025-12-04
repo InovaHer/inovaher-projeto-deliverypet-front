@@ -64,6 +64,7 @@ function App() {
               <Route path="/listarprodutos" element={<ListaProdutos />} />
               <Route path="/usuarios/logar" element={<FormLogin  />} />
               <Route path="/sobre" element={<Sobre />} />
+              <Route path="/herostack" element={<Sobre />} />
 
             </Routes>
           </div>
