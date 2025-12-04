@@ -1,12 +1,14 @@
 import { useContext, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
- 
 import { AuthContext } from "../../contexts/AuthContext"
 import { ToastAlerta } from "../../utils/ToastAlerta"
+
  
+
+
 function Perfil() {
     const navigate = useNavigate()
- 
+    
     const { usuario } = useContext(AuthContext)
  
     useEffect(() => {
@@ -15,7 +17,7 @@ function Perfil() {
             navigate("/")
         }
     }, [usuario.token])
- 
+    
     return (
         <div className="flex justify-center mx-4">
             <div className="container mx-auto my-4 rounded-2xl overflow-hidden">

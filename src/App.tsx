@@ -1,3 +1,4 @@
+
 import AtualizarPerfil from "./pages/perfil/AtualizarPerfil"
 import DeletarCategoria from "./components/categoria/deletarcategoria/DeletarCategoria"
 import FormCategoria from "./components/categoria/formcategoria/FormCategoria"
@@ -15,8 +16,9 @@ import SaibaMais from "./components/saibamais/SaibaMais"
 import Navbar from "./components/navbar/Navbar"
 import Footer from "./components/footer/footer"
 import { useState } from "react"
-import Login from "./pages/login/Login"
+
 import Sobre from "./pages/sobre/Sobre"
+import FormLogin from "./components/login/formlogin/FormLogin"
 
 type MenuState = 'closed' | 'open';
 
@@ -59,10 +61,9 @@ function App() {
               <Route path="/deletarproduto/:id" element={<DeletarProduto />} />
               <Route path="/perfil" element={<Perfil />} />
               <Route path="/atualizarusuario" element={<AtualizarPerfil />} />
-
               <Route path="/saibamais" element={<SaibaMais />} />
               <Route path="/listarprodutos" element={<ListaProdutos />} />
-              <Route path="/usuarios/logar" element={<Login />} />
+              <Route path="/usuarios/logar" element={<FormLogin  />} />
               <Route path="/sobre" element={<Sobre />} />
 
             </Routes>

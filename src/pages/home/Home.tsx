@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Hero from "../../components/hero/Hero"
 import ListaProdutos from "../../components/produto/listaprodutos/ListaProdutos"
 
@@ -16,3 +17,13 @@ function Home() {
 }
 
 export default Home
+=======
+
+function Home() {
+  return (
+    <div>Home</div>
+  )
+}
+
+export default Home
+>>>>>>> a18dc9a786ef0aa3f2b4a2635fa3b21f36feac28
