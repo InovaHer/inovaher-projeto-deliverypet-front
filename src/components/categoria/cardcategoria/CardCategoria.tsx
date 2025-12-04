@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import type Categoria from "../../../models/Categoria"
 
 interface CardCategoriaProps {
@@ -5,7 +6,7 @@ interface CardCategoriaProps {
 }
 function CardCategoria({ categoria }: CardCategoriaProps) {
     return (
-        <div className="bg-white rounded-2xl border border-indigo-200 shadow-md 
+        <div className="bg-slate-100 rounded-2xl border border-indigo-200 shadow-md 
                 flex flex-col overflow-hidden
                 p-6 gap-4
                 hover:shadow-xl transition-all duration-300">

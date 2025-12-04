@@ -1,24 +1,37 @@
-import 'reactjs-popup/dist/index.css';
-import FormProduto from '../formproduto/FormProduto';
-import Popup from 'reactjs-popup';
+import Popup from "reactjs-popup";
+import FormProduto from "../formproduto/FormProduto";
 
-function ModalProduto() {
+function ModalProduto({ onSave }: { onSave?: () => void }) {
     return (
         <>
             <Popup
                 trigger={
                     <button
-                        className='border rounded px-4 py-2 bg-indigo-500 hover:bg-indigo-800'>
+                        className='text-lg
+                        font-bold
+                         text-white
+                         bg-fuchsia-600
+                        px-6
+                        py-3
+                        rounded-xl
+                         hover:bg-fuchsia-700
+    transition'>
                         Novo Produto
                     </button>
                 }
                 modal
                 contentStyle={{
-                    borderRadius: '1rem',
-                    paddingBottom: '2rem'
+                    borderRadius: "1rem",
+                    paddingBottom: "2rem",
+                    overflowY: "auto",
+                    maxHeight: "90vh",
+                    width: "95%",
+                    maxWidth: "600px",
                 }}
             >
-                <FormProduto />
+                {((close: () => void) => (
+                    <FormProduto close={close} onSave={onSave} />
+                )) as any}
             </Popup>
         </>
     );

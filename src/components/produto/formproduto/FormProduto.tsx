@@ -7,31 +7,39 @@ import type Categoria from "../../../models/Categoria";
 import type Produto from "../../../models/Produto";
 import { AuthContext } from "../../../contexts/AuthContext";
 
-function FormProduto() {
+interface FormCategoriaProps {
+    close?: () => void;
+    onSave?: () => void;
+}
+
+function FormProduto({ close, onSave }: FormCategoriaProps) {
 
     const navigate = useNavigate();
 
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [categorias, setCategorias] = useState<Categoria[]>([]);
+    const [categoria, setCategoria] = useState<Categoria>({} as Categoria);
+    const [produto, setProduto] = useState<Produto>({} as Produto);
 
-    const [categorias, setCategorias] = useState<Categoria[]>([])
+    const { usuario, handleLogout } = useContext(AuthContext);
+    const token = usuario.token;
 
-    const [categoria, setCategoria] = useState<Categoria>({ id: 0, nome: '', descricao: '', dataCriacao: '', tipo: '', })
+    const { id } = useParams<{ id: string }>();
 
-    const [produto, setProduto] = useState<Produto>({} as Produto)
-
-    const { usuario, handleLogout } = useContext(AuthContext)
-    const token = usuario.token
-
-    const { id } = useParams<{ id: string }>()
 
     async function buscarProdutoPorId(id: string) {
         try {
             await buscar(`/produtos/${id}`, setProduto, {
                 headers: { Authorization: token }
-            })
+            });
+
+            if (produto.categoria) {
+                setCategoria(produto.categoria);
+            }
+
         } catch (error: any) {
-            if (error.toString().includes('401')) {
-                handleLogout()
+            if (error.toString().includes("401")) {
+                handleLogout();
             }
         }
     }
@@ -40,10 +48,10 @@ function FormProduto() {
         try {
             await buscar(`/categorias/${id}`, setCategoria, {
                 headers: { Authorization: token }
-            })
+            });
         } catch (error: any) {
-            if (error.toString().includes('401')) {
-                handleLogout()
+            if (error.toString().includes("401")) {
+                handleLogout();
             }
         }
     }
@@ -52,35 +60,38 @@ function FormProduto() {
         try {
             await buscar('/categorias', setCategorias, {
                 headers: { Authorization: token }
-            })
+            });
         } catch (error: any) {
-            if (error.toString().includes('401')) {
-                handleLogout()
+            if (error.toString().includes("401")) {
+                handleLogout();
             }
         }
     }
 
-    useEffect(() => {
-        if (token === '') {
-            ToastAlerta('Você precisa estar logado!', 'info');
-            navigate('/');
-        }
-    }, [token])
 
     useEffect(() => {
-        buscarCategorias()
+        if (token === "") {
+            ToastAlerta("Você precisa estar logado!", "info");
+            navigate("/");
+        }
+    }, [token]);
+
+
+    useEffect(() => {
+        buscarCategorias();
 
         if (id !== undefined) {
-            buscarProdutoPorId(id)
+            buscarProdutoPorId(id);
         }
-    }, [id])
+    }, [id]);
 
     useEffect(() => {
-        setProduto({
-            ...produto,
-            categoria: categoria,
-        })
-    }, [categoria])
+        setProduto((prev) => ({
+            ...prev,
+            categoria: categoria
+        }));
+    }, [categoria]);
+
 
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
         setProduto({
@@ -90,195 +101,214 @@ function FormProduto() {
         });
     }
 
+
     function retornar() {
         navigate('/produtos');
     }
 
+
     async function gerarNovoProduto(e: FormEvent<HTMLFormElement>) {
-        e.preventDefault()
-        setIsLoading(true)
+        e.preventDefault();
+        setIsLoading(true);
+
+        const produtoParaEnviar = {
+            ...produto,
+            categoria: categoria
+        };
 
         if (id !== undefined) {
             try {
-                await atualizar(`/produtos`, produto, setProduto, {
-                    headers: {
-                        Authorization: token,
-                    },
+                await atualizar(`/produtos`, produtoParaEnviar, setProduto, {
+                    headers: { Authorization: token },
                 });
 
-                ToastAlerta('Produto atualizado com sucesso!', 'sucesso')
+                ToastAlerta("Produto atualizado com sucesso!", "sucesso");
 
             } catch (error: any) {
-                if (error.toString().includes('401')) {
-                    handleLogout()
+                if (error.toString().includes("401")) {
+                    handleLogout();
                 } else {
-                    ToastAlerta('Erro ao atualizar o Produto!', 'erro')
+                    ToastAlerta("Erro ao atualizar o Produto!", "erro");
                 }
             }
-
         } else {
             try {
-                await cadastrar(`/produtos`, produto, setProduto, {
-                    headers: {
-                        Authorization: token,
-                    },
-                })
+                await cadastrar(`/produtos`, produtoParaEnviar, setProduto, {
+                    headers: { Authorization: token },
+                });
 
-                ToastAlerta('Produto cadastrado com sucesso!', 'sucesso');
+                ToastAlerta("Produto cadastrado com sucesso!", "sucesso");
 
             } catch (error: any) {
-                if (error.toString().includes('401')) {
-                    handleLogout()
+                if (error.toString().includes("401")) {
+                    handleLogout();
                 } else {
-                    ToastAlerta('Erro ao cadastrar o Produto!', 'erro');
+                    ToastAlerta("Erro ao cadastrar o Produto!", "erro");
                 }
             }
         }
 
-        setIsLoading(false)
-        retornar()
+        setIsLoading(false);
+
+        if (onSave) onSave();
+        if (close) return close();
+
+        retornar();
     }
 
-    const carregandoCategoria = categoria.descricao === '';
+
+    const carregandoCategoria = !categoria || !categoria.nome;
+
 
     return (
-        <div className="container flex flex-col items-center justify-center mx-auto my-4 md:my-0 px-4 py-12 bg-white">
+        <div className="container flex flex-col items-center justify-center mx-auto my-4 px-4 py-12 bg-white">
+
             <h1 className="text-3xl md:text-4xl text-center mb-6 text-indigo-700 font-semibold">
-                {id !== undefined ? 'Editar Produto' : 'Cadastrar Produto'}
+                {id !== undefined ? "Editar Produto" : "Cadastrar Produto"}
             </h1>
 
-            <form className="w-full max-w-lg flex flex-col gap-4 text-indigo-800 font-semibold max-h-[75vh] overflow-y-auto p-2"
-                onSubmit={gerarNovoProduto}>
+            <form
+                className="w-full max-w-lg flex flex-col gap-4 text-indigo-800 font-semibold p-2"
+                onSubmit={gerarNovoProduto}
+            >
+
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="titulo">Nome do Produto</label>
+                    <label>Nome</label>
                     <input
                         type="text"
-                        placeholder="Insira aqui o nome do Produto"
                         name="nome"
+                        placeholder="Nome do produto"
                         required
                         className="border-2 border-indigo-300 rounded p-2 bg-indigo-50"
-                        value={produto.nome}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                        value={produto.nome || ""}
+                        onChange={atualizarEstado}
                     />
                 </div>
+
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="titulo">Descrição do Produto</label>
+                    <label>Descrição</label>
                     <input
                         type="text"
-                        placeholder="Insira aqui a descrição do Produto"
                         name="descricao"
+                        placeholder="Descrição"
                         required
-                        className="border-2 border-indigo-300 bg-indigo-50 rounded p-2"
-                        value={produto.descricao}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                        className="border-2 border-indigo-300 rounded p-2 bg-indigo-50"
+                        value={produto.descricao || ""}
+                        onChange={atualizarEstado}
                     />
                 </div>
+
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="titulo">Preço do Produto</label>
+                    <label>Preço</label>
                     <input
-                        value={
-                            produto.preco === 0 || produto.preco === undefined ? "" : produto.preco
-                        }
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         type="number"
                         step=".01"
-                        placeholder="Adicione aqui o preço do Produto"
                         name="preco"
+                        placeholder="Preço"
                         required
-                        className="border-2 border-indigo-300 bg-indigo-50 rounded p-2"
+                        className="border-2 border-indigo-300 rounded p-2 bg-indigo-50"
+                        value={produto.preco ?? ""}
+                        onChange={atualizarEstado}
                     />
                 </div>
+
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="titulo">Foto do Produto</label>
+                    <label>Foto (URL)</label>
                     <input
-                        value={produto.foto}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         type="text"
-                        placeholder="Adicione aqui a foto do Produto"
                         name="foto"
+                        placeholder="URL da foto"
                         required
-                        className="border-2 border-indigo-300 bg-indigo-50 rounded p-2"
+                        className="border-2 border-indigo-300 rounded p-2 bg-indigo-50"
+                        value={produto.foto || ""}
+                        onChange={atualizarEstado}
                     />
                 </div>
+
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="titulo">Quantidade</label>
+                    <label>Quantidade</label>
                     <input
                         type="number"
-                        placeholder="Insira aqui a quantidade do Produto"
                         name="quantidade"
+                        placeholder="Quantidade"
                         required
-                        className="border-2 border-indigo-300 bg-indigo-50 rounded p-2"
-                        value={produto.quantidade}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                        className="border-2 border-indigo-300 rounded p-2 bg-indigo-50"
+                        value={produto.quantidade ?? ""}
+                        onChange={atualizarEstado}
                     />
                 </div>
+
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="titulo">Proteína</label>
+                    <label>Proteína</label>
                     <input
                         type="text"
-                        placeholder="Insira aqui a proteína do Produto"
                         name="proteina"
+                        placeholder="Proteína"
                         required
-                        className="border-2 border-indigo-300 bg-indigo-50 rounded p-2"
-                        value={produto.proteina}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                        className="border-2 border-indigo-300 rounded p-2 bg-indigo-50"
+                        value={produto.proteina || ""}
+                        onChange={atualizarEstado}
                     />
                 </div>
+
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="titulo">Tipo do Pet</label>
+                    <label>Tipo de Pet</label>
                     <input
                         type="text"
-                        placeholder="O seu pet é um cachorro ou gato?"
                         name="tipoPet"
+                        placeholder="Cachorro ou Gato"
                         required
-                        className="border-2 border-indigo-300 bg-indigo-50 rounded p-2"
-                        value={produto.tipoPet}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                        className="border-2 border-indigo-300 rounded p-2 bg-indigo-50"
+                        value={produto.tipoPet || ""}
+                        onChange={atualizarEstado}
                     />
                 </div>
+
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="titulo">Faixa Etária do Pet</label>
+                    <label>Faixa Etária</label>
                     <input
                         type="text"
-                        placeholder="O seu pet é filhote, adulto ou senior?"
                         name="faixaEtaria"
+                        placeholder="Filhote, Adulto, Sênior"
                         required
-                        className="border-2 border-indigo-300 bg-indigo-50 rounded p-2"
-                        value={produto.faixaEtaria}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                        className="border-2 border-indigo-300 rounded p-2 bg-indigo-50"
+                        value={produto.faixaEtaria || ""}
+                        onChange={atualizarEstado}
                     />
                 </div>
+
                 <div className="flex flex-col gap-2">
-                    <p>Categoria do Produto</p>
-                    <select name="categoria" id="categoria" className='border-2 p-2 border-indigo-300 bg-indigo-50 rounded'
+                    <p>Categoria</p>
+                    <select
+                        name="categoria"
+                        id="categoria"
+                        className="border p-2 border-indigo-600 rounded bg-indigo-200"
+                        value={categoria.id || ""}
                         onChange={(e) => buscarCategoriaPorId(e.currentTarget.value)}
                     >
-                        <option value="" selected disabled>Selecione uma Categoria</option>
+                        <option value="" disabled>Selecione uma Categoria</option>
 
-                        {categorias.map((categoria) => (
-
-                            <>
-                                <option value={categoria.id}>{categoria.nome}</option>
-                            </>
+                        {categorias.map((cat) => (
+                            <option key={cat.id} value={cat.id}>
+                                {cat.nome}
+                            </option>
                         ))}
-
 
                     </select>
                 </div>
-                <button
-                    type='submit'
-                    className='rounded text-white bg-indigo-500 hover:bg-indigo-700 w-full py-2 mt-2 flex justify-center items-center text-base font-semibold'
-                    disabled={carregandoCategoria}
-                >
-                    {isLoading ?
-                        <ClipLoader
-                            color="#ffffff"
-                            size={24}
-                        /> :
-                        <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
 
-                    }
+                <button
+                    type="submit"
+                    disabled={carregandoCategoria}
+                    className="rounded text-white bg-indigo-500 hover:bg-indigo-700 w-full py-2 mt-2 flex justify-center items-center text-base font-semibold"
+                >
+                    {isLoading ? (
+                        <ClipLoader color="#ffffff" size={24} />
+                    ) : (
+                        <span>{id === undefined ? "Cadastrar" : "Atualizar"}</span>
+                    )}
                 </button>
+
             </form>
         </div>
     );

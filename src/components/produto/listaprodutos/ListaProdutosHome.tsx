@@ -1,46 +1,28 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { buscar } from "../../../services/Service";
 import { SyncLoader } from "react-spinners";
 import CardProduto from "../cardprodutos/CardProdutos";
 import type Produto from "../../../models/Produto";
-import { AuthContext } from "../../../contexts/AuthContext";
-import { ToastAlerta } from "../../../utils/ToastAlerta";
-import { useNavigate } from "react-router-dom";
-import ModalProdutos from "../modalproduto/ModalProdutos";
 
 function ListaProdutos() {
-
-    const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const [produtos, setProdutos] = useState<Produto[]>([])
 
-    const { usuario, handleLogout } = useContext(AuthContext);
-    const token = usuario.token;
-
     useEffect(() => {
-        if (token === '') {
-            ToastAlerta('Você precisa estar logado!', 'info');
-            navigate('/')
-        }
-    }, [token])
-    useEffect(() => {
-        buscarProdutos();
-    }, []);
+        buscarProdutos()
+    }, [])
 
 
     async function buscarProdutos() {
         try {
             setIsLoading(true)
 
-            await buscar('/produtos', setProdutos, {
-                headers: { Authorization: token }
-            })
+            await buscar('/produtos', setProdutos)
+
         } catch (error: any) {
-            if (error.toString().includes('401')) {
-                handleLogout();
-            }
+            console.log(error)
         } finally {
             setIsLoading(false)
         }
@@ -58,10 +40,6 @@ function ListaProdutos() {
                     />
                 </div>
             )}
-
-            <div className="flex justify-end w-full px-8 mt-8">
-                <ModalProdutos onSave={buscarProdutos} />
-            </div>
 
             <div className="flex justify-center w-full my-4">
                 <div className="container flex flex-col">

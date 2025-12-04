@@ -1,37 +1,42 @@
 import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 import FormCategoria from "../formcategoria/FormCategoria";
 
-function ModalDepartamento() {
+function ModalCategoria({ onSave }: { onSave?: () => void }) {
     return (
         <>
             <Popup
                 trigger={
                     <button
-                        className='
-                            border rounded 
-                            border-fuchsia-500 
-                            font-bold 
-                            px-4 py-2 
-                            bg-fuchsia-400 
-                            hover:bg-fuchsia-700 
-                            text-white   // <-- AQUI
-                            w-80 
-                            md:text-lg
-                        '
-                    >
+                        className='text-lg
+                        font-bold
+                         text-white
+                         bg-fuchsia-600
+                        px-6
+                        py-3
+                        rounded-xl
+                         hover:bg-fuchsia-700
+    transition'>
                         Nova Categoria
                     </button>
                 }
                 modal
                 contentStyle={{
-                    borderRadius: '1rem',
-                    paddingBottom: '2rem'
+                    borderRadius: "1rem",
+                    paddingBottom: "2rem",
+                    overflowY: "auto",
+                    maxHeight: "90vh",
+                    width: "95%",
+                    maxWidth: "600px",
                 }}
             >
-                <FormCategoria />
+                {((close: () => void) => (
+                    <FormCategoria close={close} onSave={onSave} />
+                )) as any}
             </Popup>
+
         </>
     );
 }
 
-export default ModalDepartamento;
+export default ModalCategoria;

@@ -26,8 +26,9 @@ function ListaCategorias() {
         }
     }, [token])
     useEffect(() => {
-        buscarCategorias()
-    }, [categorias.length]);
+        buscarCategorias();
+    }, []);
+
 
     async function buscarCategorias() {
         try {
@@ -62,7 +63,7 @@ function ListaCategorias() {
             }
 
             <div className="flex justify-end w-full px-8 mt-8">
-                <ModalCategoria />
+                <ModalCategoria onSave={buscarCategorias} />
             </div>
 
             <div className="flex justify-center w-full min-h-[calc(100vh-8rem)] overflow-x-hidden">
