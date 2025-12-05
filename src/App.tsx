@@ -20,6 +20,8 @@ import Sobre from "./pages/sobre/Sobre"
 import FormLogin from "./components/login/formlogin/FormLogin"
 import DepoimentosPets from "./components/saibamais/depoimentos/DepoimentoPet"
 import Cart from "./components/carrinho/Card"
+import { CartProvider } from "./contexts/CardContext"
+import ListarProdutosPorNome from "./components/produto/listarprodutospornome/ListarProdutosPorNome"
 
 type MenuState = 'closed' | 'open';
 
@@ -38,6 +40,7 @@ function App() {
   return (
     <>
       <AuthProvider>
+        <CartProvider>
         <ToastContainer />
         <BrowserRouter>
           <Navbar
@@ -69,11 +72,13 @@ function App() {
               <Route path="/depoimentos" element={<DepoimentosPets />} />
               <Route path="/herostack" element={<Sobre />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/consultarnome/:nome" element={<ListarProdutosPorNome />} />
 
             </Routes>
           </div>
           <Footer/>
         </BrowserRouter>
+        </CartProvider>
       </AuthProvider>
     </>
   )

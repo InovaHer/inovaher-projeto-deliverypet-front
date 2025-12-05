@@ -1,16 +1,11 @@
 import Hero from "../../components/hero/Hero"
-import ListaProdutosHome from "../../components/produto/listaprodutos/ListaProdutosHome"
+
 
 
 function Home() {
   return (
     <main className="pt-24">
       <Hero />
-
-
-      <div className="py-2 md:py-0 md:mb-4">
-        <ListaProdutosHome />
-      </div>
 
     </main>
   )

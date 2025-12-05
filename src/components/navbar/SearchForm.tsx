@@ -47,4 +47,3 @@ function SearchForm({ className = "" }: { className?: string }) {
 }
 
 export default SearchForm;
-
