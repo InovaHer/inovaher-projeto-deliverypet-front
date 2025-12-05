@@ -1,34 +1,51 @@
-import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
+import { buscar } from "../../../services/Service";
 import { SyncLoader } from "react-spinners";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 import CardProduto from "../cardprodutos/CardProdutos";
 import type Produto from "../../../models/Produto";
-import { buscarSem } from "../../../services/Service";
+import { AuthContext } from "../../../contexts/AuthContext";
+import ModalProduto from "../modalproduto/ModalProdutos";
 
+function ListaProdutosHome() {
 
-function ListaProdutos() {
+    const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const [produtos, setProdutos] = useState<Produto[]>([])
 
+    const { usuario, handleLogout } = useContext(AuthContext)
+    const token = usuario.token
+
+    useEffect(() => {
+        if (token === '') {
+            ToastAlerta('Você precisa estar logado!', 'info')
+            navigate('/')
+        }
+    }, [token])
+
     useEffect(() => {
         buscarProdutos()
-    }, [])
-
+    }, [produtos.length])
 
     async function buscarProdutos() {
         try {
+
             setIsLoading(true)
 
-            await buscarSem('/produtos', setProdutos)
-
+            await buscar('/produtos', setProdutos, {
+                headers: { Authorization: token }
+            })
         } catch (error: any) {
-            console.log(error)
+            if (error.toString().includes('401')) {
+                handleLogout()
+            }
         } finally {
             setIsLoading(false)
         }
     }
-
 
     return (
         <>
@@ -36,7 +53,7 @@ function ListaProdutos() {
             {isLoading && (
                 <div className="flex justify-center w-full my-8">
                     <SyncLoader
-                        color="#1e1b4b"
+                        color="#4338CA"
                         size={32}
                     />
                 </div>
@@ -65,4 +82,4 @@ function ListaProdutos() {
     );
 }
 
-export default ListaProdutos;
+export default ListaProdutosHome;
