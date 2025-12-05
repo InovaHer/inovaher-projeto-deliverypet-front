@@ -19,6 +19,8 @@ import { useState } from "react"
 import Sobre from "./pages/sobre/Sobre"
 import FormLogin from "./components/login/formlogin/FormLogin"
 import DepoimentosPets from "./components/saibamais/depoimentos/DepoimentoPet"
+import Cart from "./components/carrinho/Cart"
+import { CartProvider } from "./contexts/CartContext"
 
 type MenuState = 'closed' | 'open';
 
@@ -38,13 +40,14 @@ function App() {
     <>
       <AuthProvider>
         <ToastContainer />
+        <CartProvider >
         <BrowserRouter>
           <Navbar
             menuState={menuState}
             onMenuToggle={toggleMenu}
             onMenuClose={closeMenu}
           />
-          <div className="mt-[80px] min-h-[80vh]">
+          <div className=".mt-[80px] min-h-[80vh]">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />
@@ -67,11 +70,13 @@ function App() {
               <Route path="/sobre" element={<Sobre />} />
               <Route path="/depoimentos" element={<DepoimentosPets />} />
               <Route path="/herostack" element={<Sobre />} />
+               <Route path="/cart" element={<Cart />} />
 
             </Routes>
           </div>
           <Footer/>
         </BrowserRouter>
+        </CartProvider>
       </AuthProvider>
     </>
   )

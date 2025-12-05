@@ -7,11 +7,12 @@ import {
     InfoIcon
 } from "@phosphor-icons/react";
 
-import { useContext, useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useRef } from "react";
+import { Link } from "react-router-dom";
 import SearchForm from "../navbar/SearchForm";
 import ModalLogin from "../login/modallogin/ModalLogin";
-import { AuthContext } from "../../contexts/AuthContext";
+//import { AuthContext } from "../../contexts/AuthContext";
+import { CartContext } from "../../contexts/CartContext";
 
 
 type MenuState = 'closed' | 'open';
@@ -23,6 +24,10 @@ type MenuState = 'closed' | 'open';
 }
 
 function Navbar({ menuState, onMenuToggle, onMenuClose }: Readonly<NavbarProps>) {
+    
+    // Obtém a quantidade de itens do carrinho via context
+    const { quantidadeItems } = useContext(CartContext)
+    
     const menuRef = useRef<HTMLDivElement>(null);
 
     const handleMenuToggle = (): void => {
@@ -81,8 +86,13 @@ function Navbar({ menuState, onMenuToggle, onMenuClose }: Readonly<NavbarProps>)
                 <ModalLogin />
                 
 
-                <Link to='/carrinho' className='hover:text-fuchsia-300 transition'>
+                <Link to='/cart' className='hover:text-fuchsia-300 transition'>
                 <ShoppingCartIcon size={28} weight='bold' />
+                {quantidadeItems > 0 && (
+                    <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                        {quantidadeItems}
+                    </span>
+                )}
                 </Link>
 
                 <Link
@@ -160,8 +170,13 @@ function Navbar({ menuState, onMenuToggle, onMenuClose }: Readonly<NavbarProps>)
                 <div className='flex gap-6 mt-6'>
                     <ModalLogin />
 
-                <Link to='/carrinho' onClick={handleMenuClose}>
+                <Link to='/cart' onClick={handleMenuClose}>
                     <ShoppingCartIcon size={32} weight='bold' />
+                    {quantidadeItems > 0 && (
+                    <span className="relative -top-9 -right-5 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                     {quantidadeItems}
+                    </span>
+                )}  
                 </Link>
 
                 <Link to='/logout' onClick={handleMenuClose}>

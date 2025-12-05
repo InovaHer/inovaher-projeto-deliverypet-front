@@ -4,7 +4,12 @@ import type UsuarioLogin from "../../../models/UsuarioLogin"
 import { AuthContext } from "../../../contexts/AuthContext"
 import { ClipLoader } from "react-spinners"
 
-function FormLogin() {
+interface FormLoginProps {
+	onLoginSuccess?: () => void;
+}
+
+
+function FormLogin({ onLoginSuccess }: FormLoginProps) {
 	const navigate = useNavigate()
 
 	const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({} as UsuarioLogin)
@@ -13,9 +18,12 @@ function FormLogin() {
 
 	useEffect( () => {
 		if (usuario.token !== ""){
+			//fecha o modal
+			onLoginSuccess?.()
+			//redireciona para a home
 			navigate('/')
 		}
-	}, [usuario])
+	}, [usuario, navigate, onLoginSuccess])
 
 	function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
 		setUsuarioLogin({
