@@ -6,7 +6,7 @@ import { ToastAlerta } from "../../../utils/ToastAlerta";
 import CardProduto from "../cardprodutos/CardProdutos";
 import type Produto from "../../../models/Produto";
 import { AuthContext } from "../../../contexts/AuthContext";
-import ModalProduto from "../modalproduto/ModalProdutos";
+
 
 function ListaProdutosHome() {
 

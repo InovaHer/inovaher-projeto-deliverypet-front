@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { PacmanLoader } from "react-spinners"
 import type Produto from "../../../models/Produto"
-import { buscar } from "../../../services/Service"
 import CardProdutos from "../cardprodutos/CardProdutos"
+import { buscar } from "../../../services/Service"
+import { AuthContext } from "../../../contexts/AuthContext"
 
 function buscarProdutosPorNome() {
 	const [produtos, setProdutos] = useState<Produto[]>([]) // Todos os Produtos
@@ -13,16 +14,27 @@ function buscarProdutosPorNome() {
 
 	const { nome } = useParams<{ nome: string }>()
 
+	const { usuario, handleLogout } = useContext(AuthContext)
+	const token = usuario.token
+
+	// buscar("/produtos", setProdutos)
+
 	async function buscarTodosProdutos() {
-		try {
-			setIsLoading(true)
-			await buscar("/produtos", setProdutos)
-		} catch (error) {
-			alert("Erro ao carregar produtos!")
-		} finally {
-			setIsLoading(false)
-		}
-	}
+        try {
+
+            setIsLoading(true)
+
+            await buscar('/produtos', setProdutos, {
+                headers: { Authorization: token }
+            })
+        } catch (error: any) {
+            if (error.toString().includes('401')) {
+                handleLogout()
+            }
+        } finally {
+            setIsLoading(false)
+        }
+    }
 
 	function filtrarProdutos() {
 		let produtosFiltrados = produtos
@@ -50,7 +62,7 @@ function buscarProdutosPorNome() {
 		setFiltroPreco("")
 		const radioButtons = document.getElementsByName("preco")
 		radioButtons.forEach((radio) => {
-			;(radio as HTMLInputElement).checked = false
+			; (radio as HTMLInputElement).checked = false
 		})
 	}
 
@@ -120,7 +132,7 @@ function buscarProdutosPorNome() {
 									<span className="text-sm font-semibold text-gray-700 whitespace-nowrap">
 										Preço:
 									</span>
-									
+
 									<div className="flex flex-wrap items-center gap-3 md:gap-5">
 										<label className="flex items-center gap-2 cursor-pointer group">
 											<input
