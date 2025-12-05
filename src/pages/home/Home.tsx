@@ -6,7 +6,6 @@ function Home() {
   return (
     <main className="pt-24">
       <Hero />
-
     </main>
   )
 }
