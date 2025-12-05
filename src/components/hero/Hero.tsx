@@ -9,7 +9,7 @@ export default function HeroHome() {
 
           {/* TEXTO */}
           <div className="text-center md:text-left">
-
+{/*  */}
             <h1 className="
               mb-6 
               text-5xl md:text-6xl xl:text-7xl 
