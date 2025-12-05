@@ -4,7 +4,7 @@ import InovaHerAbout from "../../inovaherabout/InovaHerAbout"
 function Finalizacao() {
     return (
         <>
-            <div className="max-h-[70vh] overflow-y-auto p-4">
+            <div className="max-h-[100vh] ">
                 <div>
                     <EmBreve />
                 </div>

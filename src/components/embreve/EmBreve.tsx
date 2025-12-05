@@ -25,7 +25,7 @@ export function EmBreve() {
                     <img
                         src="https://ik.imagekit.io/wvjuanedn/Projeto%20Delivery/embreve.png"
                         alt="Imagem Em Breve"
-                        className="w-72 h-72 object-cover rounded-2xl shadow-xl border-4 border-slade-100"
+                        className="w-72 h-72 object-cover rounded-2xl shadow-xl border-4 border-slate-800"
                     />
                 </div>
             </div>

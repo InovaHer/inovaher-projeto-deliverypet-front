@@ -163,7 +163,7 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
     return (
         <div className="container flex flex-col items-center justify-center mx-auto my-4 px-4 py-12 bg-white">
 
-            <h1 className="text-3xl md:text-4xl text-center mb-6 text-indigo-700 font-semibold">
+            <h1 className="text-3xl md:text-4xl text-center mb-6 text-indigo-700 font-bold">
                 {id !== undefined ? "Editar Produto" : "Cadastrar Produto"}
             </h1>
 

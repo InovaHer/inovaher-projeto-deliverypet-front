@@ -35,8 +35,8 @@ function Marcia() {
           >
             Marcia Condarco
           </h2>
-          <p className="text-2xl md:text-3xl font-semibold">
-            Desenvolvedora Full Stack - Tester
+          <p className="text-2xl md:text-3xl font-semibold text-center">
+            Desenvolvedora Full Stack <br/> Tester
           </p>
           <img
             src="https://ik.imagekit.io/wvjuanedn/QRCode/marciacondarco.png?updatedAt=1764592929262"

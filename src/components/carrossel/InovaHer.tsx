@@ -38,7 +38,7 @@ function InovaHer() {
 
         <div className="flex flex-col justify-center items-center h-full">
           <p className="text-lg md:text-xl font-semibold text-center px-4">
-            Texto sobre o projeto
+            O delivery que faz seu pet correr até a porta.
           </p>
         </div>
 

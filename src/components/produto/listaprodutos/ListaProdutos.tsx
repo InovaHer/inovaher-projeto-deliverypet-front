@@ -53,7 +53,7 @@ function ListaProdutos() {
             {isLoading && (
                 <div className="flex justify-center w-full my-8">
                     <SyncLoader
-                        color="#1e1b4b"
+                        color="#4338CA"
                         size={32}
                     />
                 </div>

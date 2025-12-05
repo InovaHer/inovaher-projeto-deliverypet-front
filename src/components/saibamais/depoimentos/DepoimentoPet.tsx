@@ -31,7 +31,7 @@
       "Minha energia voltou! Agora consigo brincar por muito mais tempo e meu pelo está super brilhante!",
   },
   {
-    nome: "Thor",
+    nome: "Taz",
     raca: "Caramelus Brasileiro",
     imagem: "https://ik.imagekit.io/wvjuanedn/Projeto%20Delivery/dog%20jamila%201.jpg",
     mensagem:
@@ -66,7 +66,7 @@
       "Meu peso está controlado e minhas dores articulares melhoraram demais!",
   },
   {
-    nome: "Amora",
+    nome: "Madrox",
     raca: "SRD",
     imagem: "https://ik.imagekit.io/wvjuanedn/Projeto%20Delivery/cat%20jamila.jpg",
     mensagem:

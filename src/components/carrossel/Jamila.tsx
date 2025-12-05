@@ -33,10 +33,10 @@ function Jamila() {
       text-center
     "
           >
-            Jamila Moraes Cardoso
+            Jamila M. Cardoso
           </h2>
-          <p className="text-2xl md:text-3xl font-semibold">
-            Desenvolvedora Full Stack - Scrum Master
+          <p className="text-2xl md:text-3xl font-semibold text-center">
+            Desenvolvedora Full Stack<br/>Scrum Master
           </p>
 
           <img

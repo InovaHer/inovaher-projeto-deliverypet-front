@@ -63,7 +63,6 @@ function App() {
               <Route path="/atualizarusuario" element={<AtualizarPerfil />} />
               <Route path="/saibamais" element={<SaibaMais />} />
               <Route path="/listarprodutos" element={<ListaProdutos />} />
-              <Route path="/usuarios/logar" element={<FormLogin  />} />
               <Route path="/sobre" element={<Sobre />} />
               <Route path="/depoimentos" element={<DepoimentosPets />} />
               <Route path="/herostack" element={<Sobre />} />

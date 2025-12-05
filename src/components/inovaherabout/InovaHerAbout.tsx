@@ -13,13 +13,14 @@ export default function InovaHerAbout() {
                 </div>
 
                 {/* Texto + QRCode */}
-                <div className="flex flex-col items-center w-full sm:w-2/3 gap-6 text-center">
+                <div className="flex flex-col items-center w-full sm:w-2/3 gap-6 text-justify">
                     {/* Texto principal */}
-                    <p className="text-justify sm:text-left text-5x1 leading-relaxed  font-semibold drop-shadow-md text-white">
+                    <p className="text-justify text-2xl leading-relaxed font-semibold drop-shadow-md text-white">
                         Uma empresa fictícia criada como parte do Projeto Integrador do Bootcamp da Generation Brasil.
                         Formada por um grupo de mulheres desenvolvedoras, a InovaHer nasceu do desejo de unir
                         tecnologia, inovação e empoderamento feminino em um mesmo propósito.
                     </p>
+
 
                     {/* QRCode abaixo do texto */}
                     <div className="flex flex-col items-center justify-center gap-3 mt-2">
@@ -28,7 +29,7 @@ export default function InovaHerAbout() {
                             alt="QRCode InovaHer"
                             className="w-48 h-48 object-contain drop-shadow-xl"
                         />
-                        <span className="text-slade-100 font-semibold text-lg">
+                        <span className="text-3xl text-slate-100 font-semibold">
                             Conheça nossos projetos
                         </span>
                     </div>

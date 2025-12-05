@@ -86,7 +86,7 @@ function Navbar({ menuState, onMenuToggle, onMenuClose }: Readonly<NavbarProps>)
                 </Link>
 
                 <Link
-                to='/logout'
+                to='/'
                 className='hover:text-fuchsia-400 transition'
                 title="Sair"
                 >
@@ -164,7 +164,7 @@ function Navbar({ menuState, onMenuToggle, onMenuClose }: Readonly<NavbarProps>)
                     <ShoppingCartIcon size={32} weight='bold' />
                 </Link>
 
-                <Link to='/logout' onClick={handleMenuClose}>
+                <Link to='/' onClick={handleMenuClose}>
                     <SignOutIcon size={32} weight='bold' />
                 </Link>
                 </div>

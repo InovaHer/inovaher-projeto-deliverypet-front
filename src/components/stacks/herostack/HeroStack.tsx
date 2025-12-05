@@ -11,7 +11,7 @@ export default function HeroHome() {
         <section className="bg-white py-24 overflow-hidden">
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-            <div className="text-center bg-slate-100 rounded-2xl p-12 mx-auto">
+            <div className="text-center bg-white rounded-2xl p-12 mx-auto">
 
             <h1 className="mb-6 text-2xl md:text-2xl xl:text-6xl font-extrabold text-indigo-700">
                 Tecnologias utilizadas para desenvolver o projeto
