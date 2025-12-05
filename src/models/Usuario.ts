@@ -1,3 +1,4 @@
+import type Produto from "./Produto";
 
 export default interface Usuario {
     id: number;
