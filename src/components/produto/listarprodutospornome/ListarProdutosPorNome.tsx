@@ -48,9 +48,9 @@ function ListaProdutoPorNome() {
 		if (filtroPreco) {
 			produtosFiltrados = produtosFiltrados.filter((produto) => {
 				const preco = produto.preco
-				if (filtroPreco === "200") return preco <= 200
-				if (filtroPreco === "500") return preco > 200 && preco <= 500
-				if (filtroPreco === "m500") return preco > 500
+				if (filtroPreco === "10") return preco <= 10
+				if (filtroPreco === "20") return preco > 10 && preco <= 20
+				if (filtroPreco === "m50") return preco <= 50
 				return true
 			})
 		}
@@ -138,12 +138,12 @@ function ListaProdutoPorNome() {
 											<input
 												type="radio"
 												name="preco"
-												value="200"
+												value="10"
 												onChange={(e) => setFiltroPreco(e.target.value)}
 												className="w-4 h-4 text-teal-600 focus:ring-teal-500 cursor-pointer"
 											/>
 											<span className="text-sm text-gray-700 group-hover:text-teal-700 transition-colors whitespace-nowrap">
-												Até R$ 200
+												Até R$ 10
 											</span>
 										</label>
 
@@ -151,12 +151,12 @@ function ListaProdutoPorNome() {
 											<input
 												type="radio"
 												name="preco"
-												value="500"
+												value="20"
 												onChange={(e) => setFiltroPreco(e.target.value)}
 												className="w-4 h-4 text-teal-600 focus:ring-teal-500 cursor-pointer"
 											/>
 											<span className="text-sm text-gray-700 group-hover:text-teal-700 transition-colors whitespace-nowrap">
-												R$ 200 - R$ 500
+												R$ 10 - R$ 20
 											</span>
 										</label>
 
@@ -164,12 +164,12 @@ function ListaProdutoPorNome() {
 											<input
 												type="radio"
 												name="preco"
-												value="m500"
+												value="m50"
 												onChange={(e) => setFiltroPreco(e.target.value)}
 												className="w-4 h-4 text-teal-600 focus:ring-teal-500 cursor-pointer"
 											/>
 											<span className="text-sm text-gray-700 group-hover:text-teal-700 transition-colors whitespace-nowrap">
-												Acima de R$ 500
+												até de R$ 50
 											</span>
 										</label>
 									</div>

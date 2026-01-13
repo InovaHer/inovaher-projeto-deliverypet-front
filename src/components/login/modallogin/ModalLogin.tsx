@@ -16,7 +16,7 @@ function ModalLogin() {
                 open={open}
                 onClose={closeModal}
                 trigger={
-                    <button className="text-white hover:text-gray-300">
+                    <button className="text-black hover:text-white">
                         <UserIcon size={22} />
                     </button>
                 }

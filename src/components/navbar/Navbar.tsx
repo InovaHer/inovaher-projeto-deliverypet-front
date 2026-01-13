@@ -25,6 +25,7 @@ type MenuState = 'closed' | 'open';
 
 function Navbar({ menuState, onMenuToggle, onMenuClose }: Readonly<NavbarProps>) {
     
+
     // Obtém a quantidade de itens do carrinho via context
     const { quantidadeItems } = useContext(CartContext)
     
@@ -38,13 +39,11 @@ function Navbar({ menuState, onMenuToggle, onMenuClose }: Readonly<NavbarProps>)
         onMenuClose();
     };
     
-
-
     return (
         <>
         {/* =================== NAVBAR DESKTOP =================== */}
-        <div className="fixed top-0 left-0 z-50 w-full py-2 bg-green-600">
-            <div className="flex justify-between mx-auto px-4 text-lg text-white">
+        {/* primeira linha */}
+            <div className="flex justify-between mx-auto px-4 text-lg text-black bg-emerald-500 p-4">
                 {/* max-w-7xl */}
             {/* ---------- DIV 1 - LOGO ---------- */}
             <div className="order-1 items-center">
@@ -52,56 +51,38 @@ function Navbar({ menuState, onMenuToggle, onMenuClose }: Readonly<NavbarProps>)
                 <img
                     src="https://ik.imagekit.io/gocq6aosm/patas.png"
                     alt="Logo InovaPet"
-                    className="w-12 md:w-14"
+                    className="w-12 md:w-14 "
                 />
-                <span className="text-2xl font-extrabold tracking-wide text-indigo-900">
+                <span className="text-2xl font-extrabold tracking-wide text-emerald-800">
                     InovaPet
                 </span>
                 </Link>
             </div>
 
             {/* ---------- DIV 2 - SEARCH ---------- */}
-            <div className="order-2 hidden md:flex w-2/5 justify-center text-black mx-25">
+            <div className="order-2 hidden gap md:flex w-2/5 justify-center text-black mx-25 ">
                 <SearchForm />
             </div>
 
             {/* ---------- DIV 3 - BOTÕES + ÍCONES ---------- */}
             <div className="order-3 hidden md:flex items-center gap-8 font-extrabold justify-end">
-
-                <Link to='/produtos' className='flex items-center gap-2 hover:underline'>
-                <ShoppingCartIcon size={22} weight="bold" />
-                Produtos
-                </Link>
-
-                <Link to='/categorias' className='flex items-center gap-2 hover:underline'>
-                <TagIcon size={22} weight="bold" />
-                Categorias
-                </Link>
-
-                <Link to='/sobre' className='flex items-center gap-2 hover:underline'>
-                <InfoIcon size={22} weight="bold" />
-                Sobre
-                </Link>
-
                 <ModalLogin />
-                
-
-                <Link to='/cart' className='hover:text-fuchsia-300 transition'>
-                <ShoppingCartIcon size={28} weight='bold' />
+                <Link to='/cart' className='hover:text-white transition'>
+                <ShoppingCartIcon size={28} weight='regular' />
                 {quantidadeItems > 0 && (
-                    <span className="absolute top-5 right-17 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                    <span className="absolute top-5 right-3 bg-red-500 text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                         {quantidadeItems}
                     </span>
                 )}
                 </Link>
 
-                <Link
+                {/* <Link
                 to='/logout'
                 className='hover:text-fuchsia-400 transition'
                 title="Sair"
                 >
                 <SignOutIcon size={28} weight='bold' />
-                </Link>
+                </Link> */}
             </div>
 
             {/* ---------- BOTÃO MENU MOBILE ---------- */}
@@ -114,7 +95,26 @@ function Navbar({ menuState, onMenuToggle, onMenuClose }: Readonly<NavbarProps>)
             </button>
 
             </div>
+        {/* SEGUNDA LINHA  */}
+        <div className="flex justify-center  bg-emerald-200">
+            <div className="flex gap-20 p-4">
+                <Link to='/produtos' className='flex text-emerald-800 hover:bg-emerald-600 hover:text-white rounded-md p-2 '>
+                <ShoppingCartIcon size={22} weight="bold" />
+                Produtos
+                </Link>
+
+                <Link to='/categorias' className='flex text-emerald-800 hover:bg-emerald-600 hover:text-white rounded-md p-2'>
+                <TagIcon size={22} weight="bold" />
+                Categorias
+                </Link>
+
+                <Link to='/sobre' className='flex text-emerald-800 hover:bg-emerald-600 hover:text-white rounded-md p-2'>
+                <InfoIcon size={22} weight="bold" />
+                Sobre
+                </Link>
+            </div>
         </div>
+        
 
         {/* =================== MENU MOBILE =================== */}
         {menuState === 'open' && (
