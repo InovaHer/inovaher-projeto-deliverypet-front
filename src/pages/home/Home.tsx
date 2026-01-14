@@ -1,6 +1,6 @@
 import CarrosselDepoimentos from "../../components/carroseldepoimentos/CarroselDepoimentos"
 import Hero from "../../components/hero/Hero"
-
+import AlimentacaoNatural from "../../components/alimentacaonatural/AlimentacaoNatural"
 
 
 function Home() {
@@ -9,6 +9,10 @@ function Home() {
 
       <div className="mb-8 md:mb-16">
         <CarrosselDepoimentos />
+      </div>
+
+      <div className="mb-8 md:mb-16">
+        <AlimentacaoNatural />
       </div>
 
     </main>
