@@ -75,37 +75,33 @@ function DeletarCategoria() {
     }
 
     return (
-        <div className='container w-full max-w-lg mx-auto px-4 pt-20 md:pt-6 '>
-            <h1 className='text-3xl md:text-4xl text-center py-4 text-fuchsia-700'>Deletar categoria</h1>
-            <p className='text-center font-semibold mb-4 text-base md:text-lg text-fuchsia-700'>
-                Você tem certeza de que deseja apagar a categoria a seguir?</p>
+        <div className='container w-full max-w-lg mx-auto px-4 pt-20 md:pt-6 mt-24'>
+            <h1 className='text-3xl md:text-4xl text-center py-4 text-emerald-800 font-bold'>Deletar categoria</h1>
+            <p className='text-center font-semibold mb-4 text-base md:text-lg text-emerald-800 font-semibold'>
+                Você tem certeza de que deseja apagar esta categoria?</p>
 
-            <div className='border border-indigo-300 flex flex-col rounded-2xl overflow-hidden justify-between bg-slate-100 '>
-                <header
-                    className='py-2 px-4 md:px-6 bg-green-700 text-white font-bold text-lg md:text-2xl'>
-                    Categoria
-                </header>
-
+            <div className='border border-emerald-800 flex flex-col rounded-2xl overflow-hidden justify-between bg-emerald-50 '>
+                
                 <div className="flex flex-col gap-3 pl-6 py-4">
-                    <p className="text-lg">{categoria.nome}</p>
-                    <p className="text-lg">{categoria.descricao}</p>
-                    <p className="text-lg"> {new Date(categoria.dataCriacao).toLocaleDateString("pt-BR")}</p>
-                    <p className="text-lg">{categoria.tipo}</p>
+                    <p className="text-lg text-emerald-600 font-bold">{categoria.nome}</p>
+                    <p className="text-lg text-emerald-800">{categoria.descricao}</p>
+                    <p className="text-lg text-emerald-800"> {new Date(categoria.dataCriacao).toLocaleDateString("pt-BR")}</p>
+                    <p className="text-lg text-emerald-800">{categoria.tipo}</p>
                 </div>
 
                 <div className="flex flex-row">
-                    <button className='text-slate-100  bg-fuchsia-500 hover:bg-fuchsia-700 w-full py-2 text-base md:text-lg'
+                    <button className='text-emerald-800 font-bold bg-orange-300 hover:bg-orange-400 w-full py-2 text-base md:text-lg'
                         onClick={retornar}
                     >
                         Não
                     </button>
-                    <button className='w-full text-slate-100 bg-indigo-500 hover:bg-indigo-700 flex items-center justify-center text-base md:text-lg'
+                    <button className='w-full text-emerald-800 font-bold bg-emerald-500 hover:bg-emerald-700 flex items-center justify-center text-base md:text-lg'
                         onClick={deletarCategoria}
                     >
                         {
                             isLoading ?
                                 <ClipLoader
-                                    color="#ffffff"
+                                    color="#086f52"
                                     size={24}
                                 />
                                 :

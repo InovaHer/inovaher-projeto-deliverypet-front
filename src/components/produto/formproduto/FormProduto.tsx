@@ -161,16 +161,37 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
 
 
     return (
-        <div className="container flex flex-col items-center justify-center mx-auto my-4 px-4 py-12 bg-white">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
 
-            <h1 className="text-3xl md:text-4xl text-center mb-6 text-indigo-700 font-semibold">
-                {id !== undefined ? "Editar Produto" : "Cadastrar Produto"}
-            </h1>
+  <div className="
+    relative bg-white
+    w-full max-w-xl
+    max-h-[90vh]
+    rounded-2xl
+    overflow-hidden
+    shadow-xl
+    flex flex-col
+  ">
 
-            <form
-                className="w-full max-w-lg flex flex-col gap-4 text-indigo-800 font-semibold p-2"
-                onSubmit={gerarNovoProduto}
-            >
+    {/* BOTÃO FECHAR */}
+    <button
+      onClick={close}
+      className="absolute top-4 right-4 bg-emerald-500 text-emerald-800 px-3 py-1 rounded-lg z-10"
+    >
+      X
+    </button>
+
+    {/* CONTEÚDO COM SCROLL */}
+    <div className="overflow-y-auto px-6 py-6">
+
+      <h1 className="text-3xl md:text-4xl text-center mb-6 text-emerald-800 font-semibold">
+        {id !== undefined ? "Editar Produto" : "Cadastrar Produto"}
+      </h1>
+
+      <form
+        className="w-full flex flex-col gap-4 text-emerald-800 font-semibold"
+        onSubmit={gerarNovoProduto}
+      >
 
                 <div className="flex flex-col gap-2">
                     <label>Nome</label>
@@ -179,7 +200,7 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
                         name="nome"
                         placeholder="Nome do produto"
                         required
-                        className="border-2 border-indigo-300 rounded p-2 bg-indigo-50"
+                        className="border-2 border-emerald-800 rounded p-2 bg-emerald-50"
                         value={produto.nome || ""}
                         onChange={atualizarEstado}
                     />
@@ -192,7 +213,7 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
                         name="descricao"
                         placeholder="Descrição"
                         required
-                        className="border-2 border-indigo-300 rounded p-2 bg-indigo-50"
+                        className="border-2 border-emerald-800 rounded p-2 bg-emerald-50"
                         value={produto.descricao || ""}
                         onChange={atualizarEstado}
                     />
@@ -206,7 +227,7 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
                         name="preco"
                         placeholder="Preço"
                         required
-                        className="border-2 border-indigo-300 rounded p-2 bg-indigo-50"
+                        className="border-2 border-emerald-800 rounded p-2 bg-emerald-50"
                         value={produto.preco ?? ""}
                         onChange={atualizarEstado}
                     />
@@ -219,21 +240,21 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
                         name="foto"
                         placeholder="URL da foto"
                         required
-                        className="border-2 border-indigo-300 rounded p-2 bg-indigo-50"
+                        className="border-2 border-emerald-800 rounded p-2 bg-emerald-50"
                         value={produto.foto || ""}
                         onChange={atualizarEstado}
                     />
                 </div>
 
-                <div className="flex flex-col gap-2">
-                    <label>Quantidade</label>
+               <div className="flex flex-col gap-2">
+                <label>Quantidade</label>
                     <input
                         type="number"
                         name="quantidade"
                         placeholder="Quantidade"
                         required
-                        className="border-2 border-indigo-300 rounded p-2 bg-indigo-50"
-                        value={produto.quantidade ?? ""}
+                        className="border-2 border-emerald-800 rounded p-2 bg-emerald-50"
+                        value={produto.quantidade || ""}
                         onChange={atualizarEstado}
                     />
                 </div>
@@ -245,7 +266,7 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
                         name="proteina"
                         placeholder="Proteína"
                         required
-                        className="border-2 border-indigo-300 rounded p-2 bg-indigo-50"
+                        className="border-2 border-emerald-800 rounded p-2 bg-emerald-50"
                         value={produto.proteina || ""}
                         onChange={atualizarEstado}
                     />
@@ -258,7 +279,7 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
                         name="tipoPet"
                         placeholder="Cachorro ou Gato"
                         required
-                        className="border-2 border-indigo-300 rounded p-2 bg-indigo-50"
+                        className="border-2 border-emerald-800 rounded p-2 bg-emerald-50"
                         value={produto.tipoPet || ""}
                         onChange={atualizarEstado}
                     />
@@ -271,7 +292,7 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
                         name="faixaEtaria"
                         placeholder="Filhote, Adulto, Sênior"
                         required
-                        className="border-2 border-indigo-300 rounded p-2 bg-indigo-50"
+                        className="border-2 border-emerald-800 rounded p-2 bg-emerald-50"
                         value={produto.faixaEtaria || ""}
                         onChange={atualizarEstado}
                     />
@@ -282,7 +303,7 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
                     <select
                         name="categoria"
                         id="categoria"
-                        className="border p-2 border-indigo-600 rounded bg-indigo-200"
+                        className="border p-2 border-emerald-600 rounded bg-emerald-50"
                         value={categoria.id || ""}
                         onChange={(e) => buscarCategoriaPorId(e.currentTarget.value)}
                     >
@@ -300,7 +321,7 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
                 <button
                     type="submit"
                     disabled={carregandoCategoria}
-                    className="rounded text-white bg-indigo-500 hover:bg-indigo-700 w-full py-2 mt-2 flex justify-center items-center text-base font-semibold"
+                    className="rounded text-emerald-800 bg-emerald-500 hover:bg-emerald-600 w-full py-2 mt-2 flex justify-center items-center text-base font-semibold"
                 >
                     {isLoading ? (
                         <ClipLoader color="#ffffff" size={24} />
@@ -311,6 +332,8 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
 
             </form>
         </div>
+        </div>
+    </div>
     );
 }
 

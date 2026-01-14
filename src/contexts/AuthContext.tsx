@@ -1,4 +1,4 @@
-import { createContext, useState, type ReactNode } from "react";
+import { createContext, useEffect, useState, type ReactNode } from "react";
 import type UsuarioLogin from "../models/UsuarioLogin";
 import { login } from "../services/Service";
 import { ToastAlerta } from "../utils/ToastAlerta";
@@ -33,19 +33,25 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     //Implementação da Função de login (Autenticação no Backend)
     async function handleLogin(usuarioLogin: UsuarioLogin) {
-        setIsloading(true);
+    setIsloading(true);
 
-        try {
-            await login(`/usuarios/logar`, usuarioLogin, setUsuario);
-            ToastAlerta("Usuário logado com sucesso!", "sucesso");
-        }catch (error) {
-            ToastAlerta(
-                "Os dados do usuário estão inconsistentes!",
-                "erro")
-        }finally {
-            setIsloading(false);
-        }
+    try {
+        await login(`/usuarios/logar`, usuarioLogin, (data) => {
+            setUsuario(data)
+            sessionStorage.setItem("usuario", JSON.stringify(data))
+        })
+
+        ToastAlerta("Usuário logado com sucesso!", "sucesso");
+
+    } catch (error) {
+        ToastAlerta(
+            "Os dados do usuário estão inconsistentes!",
+            "erro"
+        )
+    } finally {
+        setIsloading(false);
     }
+}
         
         //Implementação da função de logout (desconectar o usuario do sistema)
         function handleLogout() {
@@ -57,7 +63,20 @@ export function AuthProvider({ children }: AuthProviderProps) {
                 foto: "",
                 token: ""
             });
+            sessionStorage.removeItem("usuario");
+            ToastAlerta("Usuário deslogado com sucesso!", "sucesso");
         }
+
+
+    //Implementando o useEffect para verificar se já existe um usuario salvo no sessionStorage 
+
+    useEffect(() => {
+    const usuarioSalvo = sessionStorage.getItem("usuario")
+
+    if (usuarioSalvo) {
+        setUsuario(JSON.parse(usuarioSalvo))
+    }
+}, [])
 
     return (
         <AuthContext.Provider

@@ -9,12 +9,12 @@ function ModalProduto({ onSave }: { onSave?: () => void }) {
                     <button
                         className='text-lg
                         font-bold
-                         text-white
-                         bg-fuchsia-600
+                         text-emerald-800
+                         bg-emerald-500
                         px-6
                         py-3
                         rounded-xl
-                         hover:bg-fuchsia-700
+                         hover:bg-emerald-600
     transition'>
                         Novo Produto
                     </button>

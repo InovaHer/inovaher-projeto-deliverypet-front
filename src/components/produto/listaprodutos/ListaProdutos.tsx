@@ -49,26 +49,40 @@ function ListaProdutos() {
 
     return (
         <>
+            <div className="w-full border-t-4 border-emerald-600">
+                <div className="grid grid-cols-3 items-center max-w-7xl mx-auto px-4 py-4 mt-24 ">
 
+                    {/* Coluna esquerda (vazia só para balancear) */}
+                    <div></div>
+
+                    {/* Texto central */}
+                    <h1 className="text-center text-2xl md:text-3xl font-bold text-emerald-800">
+                        Produtos
+                    </h1>
+
+                    {/* Botão à direita */}
+                    <div className="flex justify-end mt-4">
+                        <ModalProduto onSave={buscarProdutos} />
+                    </div>
+
+                </div>
+            </div>
+            
             {isLoading && (
-                <div className="flex justify-center w-full my-8">
+                <div className="flex justify-center w-full my-8 mt-40">
                     <SyncLoader
-                        color="#1e1b4b"
+                        color="#086f52"
                         size={32}
                     />
                 </div>
             )}
 
-            <div className="flex justify-end w-full px-8 mt-8">
-                <ModalProduto />
-            </div>
-
             <div className="flex justify-center w-full my-4">
                 <div className="container flex flex-col">
 
                     {(!isLoading && produtos.length === 0) && (
-                        <span className="text-3xl text-center my-8">
-                            Nenhum Produto foi encontrado!
+                        <span className="text-3xl text-center my-8 text-emerald-800">
+                            Nenhum produto foi encontrado!
                         </span>
                     )}
 
