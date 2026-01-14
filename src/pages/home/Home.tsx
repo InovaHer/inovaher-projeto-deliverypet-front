@@ -1,10 +1,13 @@
-import CarrosselInicio from "../../components/carrosselinicio/CarrosselInicio"
-import CarrosselProdutos from "../../components/carrosselprodutos/CarrosselProdutos"
-
+import CarrosselDepoimentos from "../../components/carroseldepoimentos/CarroselDepoimentos";
+import Hero from "../../components/hero/Hero";
+import CarrosselInicio from "../../components/carrosselinicio/CarrosselInicio";
+import CarrosselProdutos from "../../components/carrosselprodutos/CarrosselProdutos";
 
 function Home() {
   return (
     <main className="pt-16">
+      
+      <Hero />
 
       <div className="mb-8 md:mb-16">
         <CarrosselInicio />
@@ -14,8 +17,12 @@ function Home() {
         <CarrosselProdutos />
       </div>
 
+      <div className="mb-16">
+        <CarrosselDepoimentos />
+      </div>
+
     </main>
-  )
+  );
 }
 
-export default Home
+export default Home;
