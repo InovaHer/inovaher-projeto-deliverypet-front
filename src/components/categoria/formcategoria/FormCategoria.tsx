@@ -73,6 +73,7 @@ function FormCategoria({ close, onSave }: FormCategoriaProps) {
                 });
 
                 ToastAlerta("A categoria foi atualizada com sucesso!", "sucesso");
+                navigate("/categorias");
             } else {
                 await cadastrar("/categorias", categoria, setCategoria, {
                     headers: { Authorization: token },
@@ -96,19 +97,26 @@ function FormCategoria({ close, onSave }: FormCategoriaProps) {
     }
 
     return (
-        <div className="container flex flex-col items-center justify-center mx-auto my-4 md:my-0 px-4 py-12">
-            <h1 className="text-3xl md:text-4xl text-center mb-6 text-indigo-700">
+        <div className="container flex flex-col items-center justify-center mx-auto my-4 md:my-0 px-4 py-12 mt-24">
+            {/* BOTÃO FECHAR */}
+            <button 
+            onClick={close}
+            className="absolute top-4 right-4 bg-emerald-500 text-emerald-800 px-4 py-2 rounded-lg"
+            >
+            X
+            </button>
+            <h1 className="text-3xl md:text-4xl text-center mb-6 text-emerald-800 font-semibold mt-24">
                 {id === undefined ? "Cadastrar" : "Atualizar"} Categoria
             </h1>
 
-            <form className="w-full max-w-lg flex flex-col gap-4 text-indigo-700" onSubmit={gerarNovaCategoria}>
+            <form className="w-full max-w-lg flex flex-col gap-4 text-emerald-800" onSubmit={gerarNovaCategoria}>
                 <div className="flex flex-col gap-2">
                     <label htmlFor="nome">Nome da Categoria</label>
                     <input
                         type="text"
-                        placeholder="Nome da categoria"
+                        placeholder=""
                         name="nome"
-                        className="border-2 border-indigo-900 rounded p-2 bg-indigo-100 text-base"
+                        className="border-2 border-emerald-800 rounded p-2 bg-emerald-50 text-base"
                         value={categoria.nome || ""}
                         onChange={atualizarEstado}
                     />
@@ -118,9 +126,9 @@ function FormCategoria({ close, onSave }: FormCategoriaProps) {
                     <label htmlFor="descricao">Descrição da Categoria</label>
                     <input
                         type="text"
-                        placeholder="Descreva aqui a categoria"
+                        placeholder=""
                         name="descricao"
-                        className="border-2 border-indigo-900 rounded p-2 bg-indigo-100 text-base"
+                        className="border-2 border-emerald-800 rounded p-2 bg-emerald-50 text-base"
                         value={categoria.descricao || ""}
                         onChange={atualizarEstado}
                     />
@@ -130,21 +138,21 @@ function FormCategoria({ close, onSave }: FormCategoriaProps) {
                     <label htmlFor="tipo">Tipo da Categoria</label>
                     <input
                         type="text"
-                        placeholder="Insira o tipo da categoria"
+                        placeholder=""
                         name="tipo"
-                        className="border-2 border-indigo-900 rounded p-2 bg-indigo-100 text-base"
+                        className="border-2 border-emerald-800 rounded p-2 bg-emerald-50 text-base"
                         value={categoria.tipo || ""}
                         onChange={atualizarEstado}
                     />
                 </div>
 
                 <button
-                    className="rounded text-slate-100 bg-indigo-500 hover:bg-indigo-800 w-full py-2 mt-2 flex justify-center items-center text-base"
+                    className="rounded text-emerald-800 font-bold bg-emerald-500 hover:bg-emerald-600 w-full py-2 mt-2 flex justify-center items-center text-base"
                     type="submit"
                     disabled={isLoading}
                 >
                     {isLoading ? (
-                        <ClipLoader color="#ffffff" size={24} />
+                        <ClipLoader color="#086f52" size={24} />
                     ) : (
                         <span>{id === undefined ? "Cadastrar" : "Atualizar"}</span>
                     )}
