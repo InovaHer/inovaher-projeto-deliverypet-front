@@ -8,12 +8,11 @@ import {
 } from "@phosphor-icons/react";
 
 import { useContext, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SearchForm from "../navbar/SearchForm";
 import ModalLogin from "../login/modallogin/ModalLogin";
 import { CartContext } from "../../contexts/CardContext";
-
-
+import { AuthContext } from "../../contexts/AuthContext";
 
 type MenuState = 'closed' | 'open';
 
@@ -25,6 +24,7 @@ type MenuState = 'closed' | 'open';
 
 function Navbar({ menuState, onMenuToggle, onMenuClose }: Readonly<NavbarProps>) {
     
+    const navigate = useNavigate();
 
     // Obtém a quantidade de itens do carrinho via context
     const { quantidadeItems } = useContext(CartContext)
@@ -39,7 +39,13 @@ function Navbar({ menuState, onMenuToggle, onMenuClose }: Readonly<NavbarProps>)
         onMenuClose();
     };
     
-    const token = localStorage.getItem("token");
+    // Deslogar o usuário
+    const {handleLogout} = useContext(AuthContext);
+
+    function logout(){
+        handleLogout();
+        navigate("/");
+    }
 
     return (
         <>
@@ -69,27 +75,22 @@ function Navbar({ menuState, onMenuToggle, onMenuClose }: Readonly<NavbarProps>)
             {/* ---------- DIV 3 - BOTÕES + ÍCONES ---------- */}
             <div className="order-3 hidden md:flex items-center gap-8 font-extrabold justify-end">
                 <ModalLogin />
-                <Link to='/cart' className='hover:text-white transition'>
-                <ShoppingCartIcon size={28} weight='regular' />
+                <Link to='/cart' className='text-emerald-800 hover:text-white transition'>
+                <ShoppingCartIcon size={28} weight='bold'/>
                 {quantidadeItems > 0 && (
-                    <span className="absolute top-5 right-3 bg-red-500 text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                    <span className="absolute top-5 right-18 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                         {quantidadeItems}
                     </span>
                 )}
                 </Link>
-
-                {/* <Link
-                to='/logout'
-                className='hover:text-fuchsia-400 transition'
-                title="Sair"
-                >
-                <SignOutIcon size={28} weight='bold' />
-                </Link> */}
+                <Link to='' onClick={logout} className="text-emerald-800 hover:text-white transition">
+                    <SignOutIcon size={32} weight='bold' />
+                </Link>
             </div>
 
             {/* ---------- BOTÃO MENU MOBILE ---------- */}
             <button
-                className="md:hidden text-white"
+                className=" txt-emerald-800 md:hidden text-white"
                 onClick={handleMenuToggle}
                 aria-label="Abrir menu"
             >
@@ -99,7 +100,7 @@ function Navbar({ menuState, onMenuToggle, onMenuClose }: Readonly<NavbarProps>)
             </div>
         {/* SEGUNDA LINHA  */}
         <div className="flex justify-center  bg-orange-300">
-            <div className="flex gap-20 p-4">
+            <div className="flex gap-20 p-2">
                 <Link to='/produtos' className='flex text-emerald-800 hover:bg-orange-400 hover:text-emerald-800 rounded-md p-2 '>
                 <ShoppingCartIcon size={22} weight="bold" />
                 Produtos
