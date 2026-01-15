@@ -52,7 +52,7 @@ function ListaCategorias() {
     return (
         <>
             <div className="w-full border-t-4 border-emerald-600">
-                <div className="grid grid-cols-3 items-center max-w-7xl mx-auto px-4 py-4">
+                <div className="grid grid-cols-3 items-center max-w-7xl mx-auto px-4 py-4 mt-10">
 
                     {/* Coluna esquerda (vazia só para balancear) */}
                     <div></div>
@@ -63,7 +63,7 @@ function ListaCategorias() {
                     </h1>
 
                     {/* Botão à direita */}
-                    <div className="flex justify-end mt-4">
+                    <div className="flex justify-end">
                         <ModalCategoria onSave={buscarCategorias} />
                     </div>
 

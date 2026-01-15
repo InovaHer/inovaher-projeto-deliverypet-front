@@ -6,7 +6,7 @@ function Footer() {
   const data = new Date().getFullYear()
 
   return (
-    <footer className="w-full bg-emerald-300 text-emerald-800 mt-3.5">
+    <footer className="w-full bg-emerald-300 text-emerald-800">
       <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-4">
 
         {/* Logo à esquerda */}

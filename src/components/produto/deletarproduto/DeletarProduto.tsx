@@ -82,11 +82,13 @@ function DeletarProduto() {
             </p>
 
             <div className='border border-emerald-300 flex flex-col rounded-2xl overflow-hidden justify-between bg-emerald-50 '>
-                
+
                 <div className="flex justify-center my-2">
                     <img
                         src={produto.foto}
-                        className="w-28 h-28 rounded-full object-cover border-2 border-emerald-300 shadow"
+                        className="w-40 md:w-44 aspect-square rounded-2xl
+                        border border-emerald-300 bg-emerald-200
+                        mt-2"
                         alt={produto.nome}
                     />
                 </div>

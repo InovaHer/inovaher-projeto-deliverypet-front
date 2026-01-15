@@ -105,7 +105,7 @@ function FormCategoria({ close, onSave }: FormCategoriaProps) {
             >
                 X
             </button>
-            <h1 className="text-3xl md:text-4xl text-center mb-6 text-emerald-800 font-semibold mt-24">
+            <h1 className="text-3xl md:text-4xl text-center mb-6 text-emerald-800 font-semibold">
                 {id === undefined ? "Cadastrar" : "Atualizar"} Categoria
             </h1>
 

@@ -4,37 +4,29 @@ import FormCategoria from "../formcategoria/FormCategoria";
 
 function ModalCategoria({ onSave }: { onSave?: () => void }) {
     return (
-        <>
-            <Popup
-                trigger={
-                    <button
-                        className='text-lg
-                        font-bold
-                         text-emerald-800
-                         bg-emerald-500
-                        px-6
-                        py-3
-                        rounded-xl
-                       hover:bg-emerald-600 transition mt-24' >
-                        Nova Categoria
-                    </button>
-                }
-                modal
-                contentStyle={{
-                    borderRadius: "1rem",
-                    paddingBottom: "2rem",
-                    overflowY: "auto",
-                    maxHeight: "90vh",
-                    width: "95%",
-                    maxWidth: "600px",
-                }}
-            >
-                {((close: () => void) => (
-                    <FormCategoria close={close} onSave={onSave} />
-                )) as any}
-            </Popup>
-
-        </>
+        <Popup
+            trigger={
+                <button
+                    className="text-lg font-bold text-emerald-800 bg-emerald-500
+                     px-6 py-3 rounded-xl hover:bg-emerald-600 transition"
+                >
+                    Nova Categoria
+                </button>
+            }
+            modal
+            contentStyle={{
+                borderRadius: "1rem",
+                paddingBottom: "2rem",
+                overflowY: "auto",
+                maxHeight: "90vh",
+                width: "95%",
+                maxWidth: "600px",
+            }}
+        >
+            {((close: () => void) => (
+                <FormCategoria close={close} onSave={onSave} />
+            )) as any}
+        </Popup>
     );
 }
 

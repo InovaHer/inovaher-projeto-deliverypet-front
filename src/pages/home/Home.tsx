@@ -5,23 +5,17 @@ import CarrosselProdutos from "../../components/carrosselprodutos/CarrosselProdu
 
 function Home() {
   return (
-    <main className="pt-16">
+    <main>
 
-      <div className="mb-8 md:mb-16">
-        <CarrosselInicio />
-      </div>
+      <CarrosselInicio />
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4">
         <CarrosselProdutos />
       </div>
 
-      <div className="mb-16">
-        <CarrosselDepoimentos />
-      </div>
+      <CarrosselDepoimentos />
 
-      <div className="mb-8 md:mb-16">
-        <AlimentacaoNatural />
-      </div>
+      <AlimentacaoNatural />
 
     </main>
   );

@@ -32,7 +32,7 @@ function CarrosselProdutos() {
         if (isAuthenticated) {
             buscarProdutos();
         }
-        
+
     }, [isAuthenticated]);
 
     async function buscarProdutos() {
@@ -95,7 +95,7 @@ function CarrosselProdutos() {
 
     return (
         <div className="w-full px-4 py-8">
-            <h2 className="text-2xl font-semibold text-emerald-800 mb-4">
+            <h2 className="text-2xl font-semibold text-emerald-800 mb-4 w-full whitespace-normal wrap-break-word">
                 Produtos em Destaque
             </h2>
 

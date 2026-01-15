@@ -75,13 +75,13 @@ function DeletarCategoria() {
     }
 
     return (
-        <div className='container w-full max-w-lg mx-auto px-4 pt-20 md:pt-6 mt-24'>
+        <div className='container w-full max-w-lg mx-auto px-4 pt-20 md:pt-6'>
             <h1 className='text-3xl md:text-4xl text-center py-4 text-emerald-800 font-bold'>Deletar categoria</h1>
-            <p className='text-center font-semibold mb-4 text-base md:text-lg text-emerald-800 font-semibold'>
+            <p className='text-center font-semibold mb-4 text-base md:text-lg text-emerald-800'>
                 Você tem certeza de que deseja apagar esta categoria?</p>
 
             <div className='border border-emerald-800 flex flex-col rounded-2xl overflow-hidden justify-between bg-emerald-50 '>
-                
+
                 <div className="flex flex-col gap-3 pl-6 py-4">
                     <p className="text-lg text-emerald-600 font-bold">{categoria.nome}</p>
                     <p className="text-lg text-emerald-800">{categoria.descricao}</p>
