@@ -84,7 +84,7 @@ function Navbar({ menuState, onMenuToggle, onMenuClose }: Readonly<NavbarProps>)
                 )}
                 </Link>
                 <Link to='' onClick={logout} className="text-emerald-800 hover:text-white transition">
-                    <SignOutIcon size={32} weight='bold' />
+                    <SignOutIcon size={28} weight='bold' />
                 </Link>
             </div>
 
