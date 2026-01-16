@@ -5,6 +5,7 @@ export function EmBreve() {
 
                 {/* Texto à esquerda */}
                 <div className="flex flex-col gap-6 w-full sm:w-2/3">
+                
                     <h2 className="text-7xl font-semibold drop-shadow-md text-white">
                         Em Breve
                     </h2>
@@ -12,12 +13,14 @@ export function EmBreve() {
                     <p className="text-4xl leading-relaxed font-semibold">
                         Próximas evoluções do InovaPet:
                     </p>
+
                     <div className="list-disc pl-6 text-white text-2xl leading-relaxed font-semibold flex flex-col gap-3">
                         <p>🤝 Integração com produtores.</p>
                         <p>📊 Implementação de tabela nutricional.</p>
                         <p>💳 Módulo de pagamento.</p>
                         <p>🚚 Módulo de entrega.</p>
                     </div>
+
                 </div>
 
                 {/* Imagem à direita */}
