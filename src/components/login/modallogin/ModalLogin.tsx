@@ -16,8 +16,8 @@ function ModalLogin({ onSave }: { onSave?: () => void }) {
                 open={open}
                 onClose={closeModal}
                 trigger={
-                    <button className="text-black hover:text-white">
-                        <UserIcon size={22} />
+                    <button className="text-emerald-800 hover:text-white">
+                        <UserIcon size={28} weight='bold' />
                     </button>
                 }
                 modal
