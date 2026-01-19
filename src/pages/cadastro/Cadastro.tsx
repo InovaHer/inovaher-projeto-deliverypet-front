@@ -81,24 +81,18 @@ return (
 		<div className="bg-[url('https://ik.imagekit.io/wvjuanedn/Projeto%20Delivery/lambeijos.png')] lg:block hidden bg-no-repeat 
                     w-full min-h-screen bg-cover bg-center"
 				></div>
-				<form className="flex justify-center items-center flex-col w-2/3 gap-3"
+				<form className="flex justify-center items-center flex-col w-2/3 gap-3 text-emerald-800 border-emerald-800 my-10"
 					onSubmit={cadastrarNovoUsuario}
 				>
-					<h2 className="text-slate-900 text-5xl">Cadastrar</h2>
-					{/* <img
-					className="bg-[url('')]
-					rounded-full w-56 mx-auto mt-[-8rem] border-3 border-black relative z-10"
-					src={usuario.foto}
-					alt={`Foto${usuario.nome}`}
-					/> */}
-					<div className="flex flex-col w-full">
+					<h2 className="text-emerald-800 text-5xl">Cadastrar</h2>
+						<div className="flex flex-col w-full">
 						<label htmlFor="nome">Nome</label>
 						<input
 							type="text"
 							id="nome"
 							name="nome"
 							placeholder="Nome"
-							className="border-2 border-slate-700 rounded p-2"
+							className="border-2 border-emerald-800 bg-emerald-50 rounded p-2"
 							value={usuario.nome}
 							onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 						/>
@@ -110,7 +104,7 @@ return (
 							id="usuario"
 							name="usuario"
 							placeholder="Usuario"
-							className="border-2 border-slate-700 rounded p-2"
+							className="border-2 border-emerald-800 bg-emerald-50 rounded p-2"
 							value={usuario.usuario}
 							onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 						/>
@@ -122,7 +116,7 @@ return (
 							id="foto"
 							name="foto"
 							placeholder="Foto"
-							className="border-2 border-slate-700 rounded p-2"
+							className="border-2 border-emerald-800 bg-emerald-50 rounded p-2"
 							value={usuario.foto}
 							onFocus={() => setSenhaTocada(true)}
 							onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
@@ -140,7 +134,7 @@ return (
 							id="senha"
 							name="senha"
 							placeholder="Senha"
-							className="border-2 border-slate-700 rounded p-2"
+							className="border-2 border-emerald-800 bg-emerald-50 rounded p-2"
 							value={usuario.senha}
 							
 							onFocus={() => setSenhaTocada(true)}
@@ -161,7 +155,7 @@ return (
 							id="confirmarSenha"
 							name="confirmarSenha"
 							placeholder="Confirmar Senha"
-							className="border-2 border-slate-700 rounded p-2"
+							className="border-2 border-emerald-800 bg-emerald-50 rounded p-2"
 							value={confirmarSenha}
 							onChange={(e: ChangeEvent<HTMLInputElement>) => handleConfirmarSenha(e)}
 						/>
@@ -169,14 +163,14 @@ return (
 					<div className="flex justify-around w-full gap-8">
 						<button
 							type="reset"
-							className="rounded text-white bg-orange-300 hover:bg-orange-400 w-1/2 py-2"
+							className="rounded text-emerald-800 bg-orange-300 hover:bg-orange-400 w-1/2 py-2"
 							onClick={retornar}
 						>
 							Cancelar
 						</button>
 						<button
 							type="submit"
-							className="rounded text-white bg-emerald-500 hover:bg-emerald-600
+							className="rounded text-emerald-800 bg-emerald-500 hover:bg-emerald-600
                        		w-1/2 py-2 flex justify-center"
 						>
 							{

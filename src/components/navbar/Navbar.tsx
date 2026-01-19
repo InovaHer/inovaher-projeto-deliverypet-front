@@ -51,7 +51,7 @@ function Navbar({ menuState, onMenuToggle, onMenuClose }: Readonly<NavbarProps>)
         <>
         {/* =================== NAVBAR DESKTOP =================== */}
         {/* primeira linha */}
-            <div className="flex justify-between mx-auto px-4 text-lg text-black bg-emerald-500 p-4">
+            <div className="flex justify-between mx-auto px-4 text-lg text-emerald-800 bg-emerald-300 p-4">
                 {/* max-w-7xl */}
             {/* ---------- DIV 1 - LOGO ---------- */}
             <div className="order-1 items-center">
@@ -75,7 +75,7 @@ function Navbar({ menuState, onMenuToggle, onMenuClose }: Readonly<NavbarProps>)
             {/* ---------- DIV 3 - BOTÕES + ÍCONES ---------- */}
             <div className="order-3 hidden md:flex items-center gap-8 font-extrabold justify-end">
                 <ModalLogin />
-                <Link to='/cart' className='text-emerald-800 hover:text-white transition'>
+                <Link to='/cart' className='text-emerald-800 hover:bg-emerald-800 hover:text-emerald-300 rounded-md p-2 transition'>
                 <ShoppingCartIcon size={28} weight='bold'/>
                 {quantidadeItems > 0 && (
                     <span className="absolute top-5 right-18 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
@@ -83,7 +83,7 @@ function Navbar({ menuState, onMenuToggle, onMenuClose }: Readonly<NavbarProps>)
                     </span>
                 )}
                 </Link>
-                <Link to='' onClick={logout} className="text-emerald-800 hover:text-white transition">
+                <Link to='' onClick={logout} className="text-emerald-800 hover:bg-emerald-800 hover:text-emerald-300 rounded-md p-2  transition">
                     <SignOutIcon size={28} weight='bold' />
                 </Link>
             </div>

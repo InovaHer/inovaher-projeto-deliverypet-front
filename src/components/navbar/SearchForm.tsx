@@ -41,8 +41,8 @@ function SearchForm({ className = "" }: { className?: string }) {
                 <button 
                     type="submit" 
                     className="absolute right-1 h-8 w-8 rounded-md
-                                bg-teal-500 hover:bg-teal-600 active:bg-teal-700
-                                text-white 
+                                bg-teal-500 hover:bg-teal-600 hover:text-emerald-300 active:bg-teal-700
+                                text-emerald-800
                                 flex items-center justify-center
                                 transition-all duration-200
                                 hover:scale-105 active:scale-95

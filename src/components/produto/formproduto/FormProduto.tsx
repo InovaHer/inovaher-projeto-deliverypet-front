@@ -21,7 +21,7 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
     const [categoria, setCategoria] = useState<Categoria>({} as Categoria);
     const [produto, setProduto] = useState<Produto>({} as Produto);
 
-    const { usuario, handleLogout } = useContext(AuthContext);
+    const { usuario, handleLogout,isLogout } = useContext(AuthContext);
     const token = usuario.token;
 
     const { id } = useParams<{ id: string }>();

@@ -18,7 +18,7 @@ function CardProdutos({ produto }: Readonly<CardProdutoProps>) {
                 bg-emerald-50 rounded-2xl border border-emerald-300 shadow-md
                 flex flex-col h-full overflow-hidden
                 p-5
-                hover:shadow-lg hover:scale-[1.01] transition-all duration-300
+                hover:shadow-lg hover:scale-[1.01] transition-all duration-300 
             "
         >
             {/* Ícones (fixos no topo) */}

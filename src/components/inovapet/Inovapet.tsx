@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 
 function Inovapet() {
   return (
-    <div className="w-full bg-emerald-50 text-emerald-800 mt-3.5">
-      <div className="mx-auto flex max-w-7xl items-center gap-8 px-4 py-6">
 
+    <div className="w-full bg-emerald-100 text-emerald-800 py-1">
+      <div className="mx-auto flex max-w-7xl items-center gap-8 px-4 py-6">
         {/* Logo à esquerda */}
         <Link
           to="/home"
@@ -76,6 +76,7 @@ function Inovapet() {
         </div>
       </div>
     </div>
+
   )
 }
 

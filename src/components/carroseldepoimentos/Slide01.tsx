@@ -9,7 +9,7 @@ function Slide01() {
                         sm:h-80 /* telas >= 640px */
                         md:h-96 /* telas >= 768px */
                         lg:h-96 /* telas >= 1024px */
-                        xl:h-[500px] /* telas >= 1280px */
+                        xl:h-125/* telas >= 1280px */
                         object-contain"
             />
 

@@ -16,7 +16,7 @@ function ModalLogin({ onSave }: { onSave?: () => void }) {
                 open={open}
                 onClose={closeModal}
                 trigger={
-                    <button className="text-emerald-800 hover:text-white">
+                    <button className="text-emerald-800 hover:bg-emerald-800 hover:text-emerald-300 rounded-md p-2 transition">
                         <UserIcon size={28} weight='bold' />
                     </button>
                 }
@@ -27,7 +27,7 @@ function ModalLogin({ onSave }: { onSave?: () => void }) {
                 }}
             >
                 {((close:() => void) => (
-                    <FormLogin close={close} onSave={onSave} />
+                    <FormLogin close={close} onLoginSuccess={close} onSave={onSave} />
                 )) as any}
                 {/* <FormLogin onLoginSuccess={closeModal} /> */}
             </Popup>

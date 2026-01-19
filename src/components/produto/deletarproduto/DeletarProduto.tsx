@@ -74,7 +74,7 @@ function DeletarProduto() {
     }
 
     return (
-        <div className='container w-full max-w-md mx-auto px-4 pt-20 md:pt-6 mt-24'>
+        <div className='container w-full max-w-md mx-auto px-4 pt-20 md:pt-6 mb-10'>
             <h1 className='text-3xl md:text-4xl text-center py-4 text-emerald-800 font-bold'>Deletar Produto</h1>
 
             <p className='text-center font-semibold mb-4 text-base md:text-lg text-emerald-800'>
@@ -109,7 +109,7 @@ function DeletarProduto() {
                         Não
                     </button>
                     <button
-                        className='w-full text-emerald-800 bg-emerald-500 hover:bg-emerald-600 flex items-center justify-center text-base md:text-lg'
+                        className='w-full text-emerald-800 bg-emerald-500 hover:bg-emerald-600 flex items-center justify-center text-base md:text-lg '
                         onClick={deletarProduto}>
 
                         {isLoading ?

@@ -16,12 +16,14 @@ function ListaProdutos() {
 
     const [produtos, setProdutos] = useState<Produto[]>([])
 
-    const { usuario, handleLogout } = useContext(AuthContext)
+    const { usuario, handleLogout, isLogout } = useContext(AuthContext)
     const token = usuario.token
 
     useEffect(() => {
         if (token === '') {
-            ToastAlerta('Você precisa estar logado!', 'info')
+            if (!isLogout) {
+                            ToastAlerta('Você precisa estar logado!', 'info');
+                        }
             navigate('/')
         }
     }, [token])
@@ -49,7 +51,7 @@ function ListaProdutos() {
 
     return (
         <>
-            <div className="w-full border-t-4 border-emerald-600">
+            <div className="w-full">
                 <div className="grid grid-cols-3 items-center max-w-7xl mx-auto px-4 py-4 mt-10 ">
 
                     {/* Coluna esquerda (vazia só para balancear) */}
