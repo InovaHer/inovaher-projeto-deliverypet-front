@@ -81,7 +81,7 @@ return (
 		<div className="bg-[url('https://ik.imagekit.io/wvjuanedn/Projeto%20Delivery/lambeijos.png')] lg:block hidden bg-no-repeat 
                     w-full min-h-screen bg-cover bg-center"
 				></div>
-				<form className="flex justify-center items-center flex-col w-2/3 gap-3 text-emerald-800 border-emerald-800 my-10"
+				<form className="form-emerald flex justify-center items-center flex-col w-2/3 gap-3 text-emerald-800 border-emerald-800 my-10"
 					onSubmit={cadastrarNovoUsuario}
 				>
 					<h2 className="text-emerald-800 text-5xl">Cadastrar</h2>
@@ -91,8 +91,7 @@ return (
 							type="text"
 							id="nome"
 							name="nome"
-							placeholder="Nome"
-							className="border-2 border-emerald-800 bg-emerald-50 rounded p-2"
+							placeholder="Nome"						
 							value={usuario.nome}
 							onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 						/>
@@ -104,7 +103,6 @@ return (
 							id="usuario"
 							name="usuario"
 							placeholder="Usuario"
-							className="border-2 border-emerald-800 bg-emerald-50 rounded p-2"
 							value={usuario.usuario}
 							onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 						/>
@@ -116,7 +114,6 @@ return (
 							id="foto"
 							name="foto"
 							placeholder="Foto"
-							className="border-2 border-emerald-800 bg-emerald-50 rounded p-2"
 							value={usuario.foto}
 							onFocus={() => setSenhaTocada(true)}
 							onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
@@ -134,7 +131,6 @@ return (
 							id="senha"
 							name="senha"
 							placeholder="Senha"
-							className="border-2 border-emerald-800 bg-emerald-50 rounded p-2"
 							value={usuario.senha}
 							
 							onFocus={() => setSenhaTocada(true)}
@@ -155,7 +151,6 @@ return (
 							id="confirmarSenha"
 							name="confirmarSenha"
 							placeholder="Confirmar Senha"
-							className="border-2 border-emerald-800 bg-emerald-50 rounded p-2"
 							value={confirmarSenha}
 							onChange={(e: ChangeEvent<HTMLInputElement>) => handleConfirmarSenha(e)}
 						/>

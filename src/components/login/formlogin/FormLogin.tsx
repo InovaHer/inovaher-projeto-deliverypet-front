@@ -47,7 +47,7 @@ function FormLogin({ onLoginSuccess, onSave, close }: FormLoginProps) {
         X
       </button>
 
-      <form className="flex justify-center items-center flex-col w-1/2 gap-4 text-emerald-800 border-emerald-800 " onSubmit={login}>
+      <form className="form-emerald flex justify-center items-center flex-col w-1/2 gap-4 text-emerald-800 border-emerald-800 " onSubmit={login}>
         <h2 className="text-emerald-800 text-5xl">Entrar</h2>
 
         <div className="flex flex-col w-full ">
@@ -57,7 +57,6 @@ function FormLogin({ onLoginSuccess, onSave, close }: FormLoginProps) {
             id="usuario"
             name="usuario"
             placeholder="Usuário"
-            className="bg-emerald-50 border-2 rounded p-2"
             value={usuarioLogin.usuario || ""}
             onChange={atualizarEstado}
           />
@@ -70,7 +69,6 @@ function FormLogin({ onLoginSuccess, onSave, close }: FormLoginProps) {
             id="senha"
             name="senha"
             placeholder="Senha"
-            className="bg-emerald-50 border-2 rounded p-2"
             value={usuarioLogin.senha || ""}
             onChange={atualizarEstado}
           />

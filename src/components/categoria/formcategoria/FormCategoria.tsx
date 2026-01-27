@@ -109,14 +109,13 @@ function FormCategoria({ close, onSave }: FormCategoriaProps) {
                 {id === undefined ? "Cadastrar" : "Atualizar"} Categoria
             </h1>
 
-            <form className="w-full max-w-lg flex flex-col gap-4 text-emerald-800" onSubmit={gerarNovaCategoria}>
+            <form className="form-emerald w-full max-w-lg flex flex-col gap-4 text-emerald-800 font-semibold " onSubmit={gerarNovaCategoria}>
                 <div className="flex flex-col gap-2">
                     <label htmlFor="nome">Nome da Categoria</label>
                     <input
                         type="text"
-                        placeholder=""
+                        placeholder="Nome da Categoria"
                         name="nome"
-                        className="border-2 border-emerald-800 rounded p-2 bg-emerald-50 text-base"
                         value={categoria.nome || ""}
                         onChange={atualizarEstado}
                     />
@@ -126,9 +125,8 @@ function FormCategoria({ close, onSave }: FormCategoriaProps) {
                     <label htmlFor="descricao">Descrição da Categoria</label>
                     <input
                         type="text"
-                        placeholder=""
+                        placeholder="Descrição da Categoria"
                         name="descricao"
-                        className="border-2 border-emerald-800 rounded p-2 bg-emerald-50 text-base"
                         value={categoria.descricao || ""}
                         onChange={atualizarEstado}
                     />
@@ -138,9 +136,8 @@ function FormCategoria({ close, onSave }: FormCategoriaProps) {
                     <label htmlFor="tipo">Tipo da Categoria</label>
                     <input
                         type="text"
-                        placeholder=""
+                        placeholder="Tipo da Categoria"
                         name="tipo"
-                        className="border-2 border-emerald-800 rounded p-2 bg-emerald-50 text-base"
                         value={categoria.tipo || ""}
                         onChange={atualizarEstado}
                     />

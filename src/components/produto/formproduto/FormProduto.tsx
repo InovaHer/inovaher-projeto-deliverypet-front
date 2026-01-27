@@ -172,7 +172,7 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
                     </h1>
 
                     <form
-                        className="w-full flex flex-col gap-4 text-emerald-800 font-semibold"
+                        className="form-emerald w-full flex flex-col gap-4 text-emerald-800 font-semibold"
                         onSubmit={gerarNovoProduto}
                     >
 
@@ -183,7 +183,6 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
                                 name="nome"
                                 placeholder="Nome do produto"
                                 required
-                                className="border-2 border-emerald-800 rounded p-2 bg-emerald-50"
                                 value={produto.nome || ""}
                                 onChange={atualizarEstado}
                             />
@@ -196,7 +195,6 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
                                 name="descricao"
                                 placeholder="Descrição"
                                 required
-                                className="border-2 border-emerald-800 rounded p-2 bg-emerald-50"
                                 value={produto.descricao || ""}
                                 onChange={atualizarEstado}
                             />
@@ -210,7 +208,6 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
                                 name="preco"
                                 placeholder="Preço"
                                 required
-                                className="border-2 border-emerald-800 rounded p-2 bg-emerald-50"
                                 value={produto.preco ?? ""}
                                 onChange={atualizarEstado}
                             />
@@ -223,7 +220,6 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
                                 name="foto"
                                 placeholder="URL da foto"
                                 required
-                                className="border-2 border-emerald-800 rounded p-2 bg-emerald-50"
                                 value={produto.foto || ""}
                                 onChange={atualizarEstado}
                             />
@@ -236,7 +232,6 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
                                 name="quantidade"
                                 placeholder="Quantidade"
                                 required
-                                className="border-2 border-emerald-800 rounded p-2 bg-emerald-50"
                                 value={produto.quantidade || ""}
                                 onChange={atualizarEstado}
                             />
@@ -249,7 +244,6 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
                                 name="proteina"
                                 placeholder="Proteína"
                                 required
-                                className="border-2 border-emerald-800 rounded p-2 bg-emerald-50"
                                 value={produto.proteina || ""}
                                 onChange={atualizarEstado}
                             />
@@ -262,7 +256,6 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
                                 name="tipoPet"
                                 placeholder="Cachorro ou Gato"
                                 required
-                                className="border-2 border-emerald-800 rounded p-2 bg-emerald-50"
                                 value={produto.tipoPet || ""}
                                 onChange={atualizarEstado}
                             />
@@ -275,7 +268,6 @@ function FormProduto({ close, onSave }: FormCategoriaProps) {
                                 name="faixaEtaria"
                                 placeholder="Filhote, Adulto, Sênior"
                                 required
-                                className="border-2 border-emerald-800 rounded p-2 bg-emerald-50"
                                 value={produto.faixaEtaria || ""}
                                 onChange={atualizarEstado}
                             />
