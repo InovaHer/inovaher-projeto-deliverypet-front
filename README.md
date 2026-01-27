@@ -1,73 +1,270 @@
-# React + TypeScript + Vite
+<p align="center">
+  <img src="https://images-ext-1.discordapp.net/external/EkfzHxtVWEM69WDGSO17B0dBGu0GGy0pNXcARWh8FOI/%3FupdatedAt%3D1761221115442/https/ik.imagekit.io/gocq6aosm/logo.png?format=webp&quality=lossless" alt="logo" />
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🐾 InovaPet – Comidinha Boa - Backend
 
-Currently, two official plugins are available:
+**Alimentação natural e personalizada para cães e gatos, entregue diretamente na porta do seu pet**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🧩 Sobre o Projeto   <br />
+<div align="center">
+   <img src="https://i.imgur.com/w8tTOuT.png" title="source: imgur.com" /> 
+</div>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+<br /><br />
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+O **InovaPet – Comidinha Boa** é uma plataforma que conecta tutores de pets a produtores e marcas de alimentação natural, oferecendo refeições frescas, saudáveis, personalizadas para cães e gatos e entrega rápida.  
+Todas as refeições são formuladas por **nutricionistas veterinários** e preparadas com **ingredientes selecionados de produtores locais**.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
+## 👥 Equipe
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+<table align="center">
+  <tr>
+    <td align="center">
+      <a href="https://github.com/stellabrumatti">
+        <img src="https://github.com/stellabrumatti.png" width="100" style="border-radius:50%"><br>
+        <b>Stella</b><br>
+        <sub>Scrum Master</sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/nayarakiyota">
+        <img src="https://github.com/nayarakiyota.png" width="100" style="border-radius:50%"><br>
+        <b>Nayara</b><br>
+        <sub>Tester</sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/MarciaCondarco">
+        <img src="https://github.com/MarciaCondarco.png" width="100" style="border-radius:50%"><br>
+        <b>Marcia</b><br>
+        <sub>Desenvolvedora</sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/jmcardoso18">
+        <img src="https://github.com/jmcardoso18.png" width="100" style="border-radius:50%"><br>
+        <b>Jamila</b><br>
+        <sub>Desenvolvedora</sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/lauhgabrielle14">
+        <img src="https://github.com/lauhgabrielle14.png" width="100" style="border-radius:50%"><br>
+        <b>Lauren</b><br>
+        <sub>Desenvolvedora</sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/patriciaEliseu">
+        <img src="https://github.com/patriciaEliseu.png" width="100" style="border-radius:50%"><br>
+        <b>Patricia</b><br>
+        <sub>Desenvolvedora</sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
+## 🩺 Problema
+Nos centros urbanos, muitos pets sofrem com problemas de saúde devido à alimentação inadequada.  
+Tutores enfrentam dificuldade em encontrar opções **nutritivas, confiáveis e personalizadas**.
+
+---
+
+## 💡 Solução
+O InovaPet fornece **refeições frescas, balanceadas e personalizadas** via aplicativo, com:
+
+- Catalogo de refeições naturais
+- Agendamento de entregas
+
+### 🔑 Diferenciais
+- **Personalização inteligente** (idade, raça, peso e necessidades do pet);  
+- **Impacto positivo** (apoio a produtores locais e práticas sustentáveis).
+
+---
+
+## 📊 Dados do Mercado
+- Crescimento anual: **+23%** no segmento de alimentação premium pet no Brasil;  
+- Tutores dispostos a investir até **35% mais** em produtos saudáveis;  
+- Apenas **12% dos tutores** têm acesso a alimentos personalizados.
+
+> O InovaPet se destaca como uma oportunidade real em um mercado em expansão.
+
+---
+
+## ⚙️ Funcionalidades Principais
+| Entidade  | Ações disponíveis                                                                 |
+|------------|-----------------------------------------------------------------------------------|
+| **Categoria** | - Listar todos<br>- Consultar por ID<br>- Consultar descrição<br>- Consultar por período de criação |
+| **Produto**    | - Listar todos<br>- Consultar por ID<br>- Consultar por nome<br>- Consultar por recomendação |
+| **Usuário**    | - Listar todos<br>- Consultar por ID<br>- Consultar por nome |
+
+---
+
+## 🧱 Arquitetura do Sistema
+### Diagramas de Classe
+
+
+```mermaid
+classDiagram
+class Categoria{
+  - id : Long
+  - data_criacao : LocalDateTime
+  - descricao : String
+  - nome : String
+  - produtos : List<Produto>
+  
+}
+class Usuario{
+  - id : Long
+  - nome : String
+  - usuario : String
+  - senha : String
+  - foto : String
+  - produtos : List<Produto>
+}
+class Produto{
+  - id : Long
+  - nome : String
+  - descricao : String
+  - preco : Double
+  - foto : String
+  - quantidade : int
+  - categoria : Categoria
+  - usuario : Usuario
+}
+Categoria "1" --> "0..*" Produto : classifica
+Usuario "1" --> "0..*" Produto : cria
+
+```
+### Diagrama Entidade Relacionamento
+
+
+```mermaid
+erDiagram
+    %% Tabelas
+    tb_usuarios {
+        BIGINT id PK "Chave primária"
+        VARCHAR(255) nome NOT NULL
+        VARCHAR(255) usuario NOT NULL
+        VARCHAR(255) senha NOT NULL
+        TEXT foto "Armazenar foto em base64 ou URL"
+    }
+
+    tb_categorias {
+        BIGINT id PK
+        TIMESTAMP data_criacao DEFAULT CURRENT_TIMESTAMP
+        VARCHAR(255) nome NOT NULL
+        VARCHAR(255) descricao
+        VARCHAR(255) tipo
+    }
+
+    tb_produtos {
+        BIGINT id PK
+        VARCHAR(255) nome NOT NULL
+        VARCHAR(255) descricao
+        VARCHAR(255) foto
+        DOUBLE preco
+        INT quantidade
+        VARCHAR(255) faixa_etaria
+        VARCHAR(255) proteina
+        VARCHAR(255) tipo_pet
+        BIGINT categoria_id FK "FK -> tb_categorias.id"
+        BIGINT usuario_id FK "FK -> tb_usuarios.id"
+    }
+
+    %% Relações
+    tb_usuarios ||--o{ tb_produtos : possui
+    tb_categorias ||--o{ tb_produtos : classifica
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Tecnologias Utilizadas
+- **Backend:** Spring Boot  
+- **Banco de Dados:** MySQL  
+- **Testes de API:** Insomnia  
+- **Controle de Versão:** Git / GitHub  
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🚀 Instalação e Execução
+
+### Pré-requisitos
+- Java 17+  
+- Maven (ou utilizar `mvnw`)  
+- MySQL  
+
+### Passos
+```bash
+# Clonar o repositório
+git clone <URL do repositório>
+
+# Configurar o banco de dados
+spring.datasource.url=jdbc:mysql://localhost:8080/inovapet
+spring.datasource.username=root
+spring.datasource.password=senha
+
+# Rodar o projeto
+./mvnw spring-boot:run
 ```
+
+---
+
+## 🔗 Endpoints Principais
+
+### Categoria
+- Listar todos  
+- Consultar por ID ou Descrição  
+- Criar / Atualizar / Deletar  
+
+### Produto
+- Listar todos  
+- Consultar por ID ou Nome  
+- Criar / Atualizar / Deletar  
+
+### Usuário
+- Listar todos  
+- Consultar por ID  
+- Cadastrar / Atualizar / Deletar  
+
+---
+
+## 🧪 Testes
+Os testes foram realizados via **Insomnia**, validando os principais fluxos CRUD e respostas HTTP da API.
+
+---
+
+## ⚠️ Desafios Enfrentados
+- Tratamento de datas e timezones;  
+- Validação de entrada e integridade referencial;  
+- Integração entre camadas e padronização das respostas.
+
+---
+
+## 🧭 Implementações Futuras
+- Desenvolvimento da **interface web e mobile**;  
+- Suporte veterinário;
+- Histórico de saúde;  
+- Assinatura recorrente;
+
+---
+
+## 📬 Contato
+- ✉️ E-mail: **inovaher@outlook.com**  
+- 🐙 GitHub: [github.com/InovaHer](https://github.com/InovaHer)
+
+---
+
+## 🖼️ Branding
+
+<p align="center">
+  <img src="https://images-ext-1.discordapp.net/external/EkfzHxtVWEM69WDGSO17B0dBGu0GGy0pNXcARWh8FOI/%3FupdatedAt%3D1761221115442/https/ik.imagekit.io/gocq6aosm/logo.png?format=webp&quality=lossless" alt="logo" />
+</p>
+
+## 📜 Licença
+Projeto licenciado sob a **MIT License**.

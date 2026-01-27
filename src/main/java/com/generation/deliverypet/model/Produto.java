@@ -1,0 +1,162 @@
+package com.generation.deliverypet.model;
+
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
+
+@Entity
+@Table(name = "tb_produtos")
+public class Produto {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@Column(length = 255)
+	@NotBlank(message = "O atributo nome é obrigatório!")
+	@Size(min = 4, message = "O atributo nome deve conter no mínimo 4 caracteres")
+	private String nome;
+	
+	@Column(length = 255)
+	@NotBlank(message = "O atributo descrição é obrigatório!")
+	@Size(min = 3, message = "O atributo descrição deve conter no mínimo 3 caracteres")
+	private String descricao;
+	
+	@NotNull(message = "O atributo preço é obrigatório!")
+	private Double preco;
+	
+	@Column(length = 255)
+	@NotBlank(message = "O atributo foto é obrigatório!")
+	@Size(min = 3, message = "O atributo foto deve conter no mínimo 3 caracteres")
+	private String foto;
+	
+	@NotNull(message = "O atributo quantidade é obrigatório!")
+	private int quantidade;
+	
+	@Column(length = 255)
+	@NotNull(message = "O atributo proteina é obrigatório!")
+	@Size(min = 3, message = "O atributo proteina deve conter no mínimo 3 caracteres")
+	private String proteina;  // exemplo de valor nutricional
+	
+	@Column(length = 255)
+	@NotBlank(message = "O atributo tipo de pet é obrigatório!")
+	@Size(min = 3, message = "O atributo tipo de pet deve conter no mínimo 3 caracteres") 
+	private String tipoPet;   // "Cachorro" ou "Gato"
+	    
+	@Column(length = 255)
+	@NotBlank(message = "O atributo faixa etaria do animal é obrigatório!")
+	@Size(min = 3, message = "O atributo faixa etaria do animal deve conter no mínimo 3 caracteres") 
+	private String faixaEtaria; // "Filhote", "Adulto", "Sênior"
+
+	@ManyToOne
+    @JsonIgnoreProperties("produto") // evita loop infinito na serialização JSON
+    private Categoria categoria;
+	
+	@ManyToOne
+    @JsonIgnoreProperties("produto") // evita loop infinito na serialização JSON
+    private Usuario usuario;
+	
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	
+
+	public String getProteina() {
+		return proteina;
+	}
+
+	public void setProteina(String proteina) {
+		this.proteina = proteina;
+	}
+
+	public String getTipoPet() {
+		return tipoPet;
+	}
+
+	public void setTipoPet(String tipoPet) {
+		this.tipoPet = tipoPet;
+	}
+
+	public String getFaixaEtaria() {
+		return faixaEtaria;
+	}
+
+	public void setFaixaEtaria(String faixaEtaria) {
+		this.faixaEtaria = faixaEtaria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
+	
+}
+
